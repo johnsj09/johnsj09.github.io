@@ -205,7 +205,13 @@ body[data-view="lab"] .hero h1 em{font-style:normal;color:var(--accent)}
 .nums div{display:grid;gap:2px}
 .nums strong{font-family:var(--f-mono);font-weight:500;font-size:19px;color:var(--hot);font-variant-numeric:tabular-nums}
 .nums span{font-size:13px;color:var(--soft)}
-.mark{font-size:23px}
+.mark{font-family:var(--f-dream);font-style:normal;font-weight:600;font-size:clamp(20px,2.3vw,25px);letter-spacing:-.01em;line-height:44px;white-space:nowrap}
+.bar .wrap{align-items:center}
+@media (max-width:640px){.bar .wrap{flex-direction:column;align-items:flex-start;gap:0;padding-block:6px 8px}.bar nav{margin-left:-14px}}
+dialog{width:min(480px,calc(100% - 32px));max-height:calc(100% - 32px);overflow:auto;padding:22px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+dialog::backdrop{background:rgba(6,8,24,.62)}
+dialog:not([open]){display:none}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -213,7 +219,7 @@ body[data-view="lab"] .hero h1 em{font-style:normal;color:var(--accent)}
 
 <header class="bar">
   <div class="wrap">
-    <a class="mark" href="#home" aria-label="Jefri T. Johnson, home">Jefri T. Johnson</a>
+    <a class="mark" href="#home" aria-label="Jefri Thimoathi Johnson, home">Jefri Thimoathi Johnson</a>
     <nav aria-label="Main">
       <a href="#academic" data-nav="academic">Research</a>
       <a href="#lab" data-nav="lab">Lab informatics</a>
@@ -625,16 +631,7 @@ body[data-view="lab"] .hero h1 em{font-style:normal;color:var(--accent)}
         <li><b>LinkedIn</b><span><a href="https://www.linkedin.com/in/jefri-thimoathi-johnson-8b94811a7">linkedin.com/in/jefri-thimoathi-johnson-8b94811a7</a></span></li>
         <li><b>Freelance profiles</b><span>Upwork and Kolabtree</span></li>
       </ul>
-      <div><button type="button" class="btn" id="cvBtn" aria-expanded="false" aria-controls="cvForm">Request my CV</button></div>
-      <form class="form" id="cvForm" hidden>
-        <label for="cvName">Your name<input id="cvName" name="name" type="text" autocomplete="name" required></label>
-        <label for="cvOrg">Organisation and your role<input id="cvOrg" name="organisation_and_role" type="text" autocomplete="organization" required></label>
-        <label for="cvEmail">Email to send the CV to<input id="cvEmail" name="email" type="email" autocomplete="email" required></label>
-        <label for="cvNote">What do you need it for?<textarea id="cvNote" name="need" rows="3" required></textarea></label>
-        <input class="hp" type="text" name="_honey" id="cvHp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="row"><button type="submit" class="btn solid">Send CV request</button></div>
-        <p class="note" id="cvStatus" aria-live="polite"></p>
-      </form>
+      <div><button type="button" class="btn solid" id="cvBtn" aria-haspopup="dialog">Request my CV</button></div>
     </div>
     <form class="form" id="msgForm">
       <h3>Send a message</h3>
@@ -647,6 +644,23 @@ body[data-view="lab"] .hero h1 em{font-style:normal;color:var(--accent)}
     </form>
   </div>
 </footer>
+
+<dialog id="cvDialog" aria-labelledby="cvTitle">
+  <form class="form" id="cvForm">
+    <div class="row" style="justify-content:space-between;align-items:flex-start">
+      <h3 id="cvTitle">Request my CV</h3>
+      <button type="button" class="btn" id="cvClose" aria-label="Close">Close</button>
+    </div>
+    <p class="note">Tell me who you are and what you need, and I will email it to you.</p>
+    <label for="cvName">Your name<input id="cvName" name="name" type="text" autocomplete="name" required></label>
+    <label for="cvOrg">Organisation and your role<input id="cvOrg" name="organisation_and_role" type="text" autocomplete="organization" required></label>
+    <label for="cvEmail">Email to send the CV to<input id="cvEmail" name="email" type="email" autocomplete="email" required></label>
+    <label for="cvNote">What do you need it for?<textarea id="cvNote" name="need" rows="3" required></textarea></label>
+    <input class="hp" type="text" name="_honey" id="cvHp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="row"><button type="submit" class="btn solid">Send CV request</button></div>
+    <p class="note" id="cvStatus" aria-live="polite"></p>
+  </form>
+</dialog>
 
 <script>
 (function(){
@@ -1025,7 +1039,9 @@ $('#season').addEventListener('click',function(){mus.season=1-mus.season; mus.ri
 $('#showRules').addEventListener('click',function(){var r=$('#rules'); r.hidden=!r.hidden; this.setAttribute('aria-expanded',r.hidden?'false':'true'); this.textContent=r.hidden?'Show the rules':'Hide the rules';});
 $('#mlI').addEventListener('input',function(){ml.I=+this.value; mlRun(); if(reduce)still();});
 $('#cvHub').addEventListener('click',hubClick);
-$('#cvBtn').addEventListener('click',function(){var f=$('#cvForm'); f.hidden=!f.hidden; this.setAttribute('aria-expanded',f.hidden?'false':'true'); if(!f.hidden)$('#cvName').focus();});
+$('#cvBtn').addEventListener('click',function(){var d=$('#cvDialog'); $('#cvStatus').textContent=''; if(d.showModal){d.showModal();}else{d.setAttribute('open','');} $('#cvName').focus();});
+$('#cvClose').addEventListener('click',function(){var d=$('#cvDialog'); if(d.close){d.close();}else{d.removeAttribute('open');} $('#cvBtn').focus();});
+$('#cvDialog').addEventListener('click',function(e){if(e.target===this&&this.close)this.close();});
 wireForm($('#msgForm'),$('#msgStatus'),'Message from the portfolio site');
 wireForm($('#cvForm'),$('#cvStatus'),'CV request from the portfolio site');
 $('#toContact').addEventListener('click',function(){$('#contactBlock').scrollIntoView({behavior:reduce?'auto':'smooth'});});
