@@ -51,7 +51,7 @@ body[data-view="home"] [data-page="home"],body[data-view="academic"] [data-page=
 @keyframes rise{from{transform:translateY(10px)}to{transform:none}}
 
 /* gate */
-.gate{display:flex;min-height:clamp(480px,68vh,640px)}
+.gate{display:flex;min-height:clamp(430px,58vh,560px)}
 .half{position:relative;flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:14px;padding:clamp(24px,4vw,48px);padding-bottom:250px;text-decoration:none;overflow:hidden;transition:flex-grow .55s cubic-bezier(.2,.7,.2,1)}
 .half:hover,.half:focus-visible{flex-grow:1.5}
 .half canvas{position:absolute;left:0;right:0;bottom:0;width:100%;height:230px}
@@ -70,7 +70,7 @@ body[data-view="home"] [data-page="home"],body[data-view="academic"] [data-page=
 .half.day .go{color:var(--day-accent)}
 @media (max-width:720px){.gate{flex-direction:column;min-height:0}.half{padding-bottom:200px}.half canvas{height:180px}.half:hover,.half:focus-visible{flex-grow:1}}
 
-.intro{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:28px 56px;padding-block:56px}
+.intro{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:28px 56px;padding-block:40px}
 .intro h1{font-size:clamp(28px,3.4vw,40px);font-weight:400;line-height:1.15}
 .intro h1 em{color:var(--hot)}
 .facts{display:grid;gap:0;margin:0;padding:0;list-style:none}
@@ -78,7 +78,7 @@ body[data-view="home"] [data-page="home"],body[data-view="academic"] [data-page=
 .facts li:last-child{border-bottom:1px solid var(--line)}
 
 /* shared sections */
-.hero{padding-block:clamp(40px,7vw,84px) 28px;display:grid;gap:20px}
+.hero{padding-block:clamp(28px,5vw,56px) 14px;display:grid;gap:20px}
 .hero h1{font-size:clamp(40px,7vw,88px);line-height:.98;max-width:13em}
 body[data-view="academic"] .hero h1{font-weight:400}
 body[data-view="academic"] .hero h1 em{font-style:italic;color:var(--hot)}
@@ -90,8 +90,8 @@ body[data-view="lab"] .hero h1 em{font-style:normal;color:var(--accent)}
 .hero.split h1{font-size:clamp(38px,5.4vw,72px)}
 #cvBrain{display:block;width:100%;height:clamp(260px,34vw,380px)}
 #cvRack{display:block;width:100%;height:clamp(240px,30vw,330px)}
-#regSay{min-height:4.6em;font-size:16px;color:var(--soft)}
-.sec{padding-block:44px;display:grid;gap:22px}
+#regSay{min-height:3.2em;font-size:16px;color:var(--soft)}
+.sec{padding-block:30px;display:grid;gap:22px}
 .sec>header{display:grid;gap:8px}
 .sec h2{font-size:clamp(26px,3.2vw,38px)}
 .note{font-size:15px;color:var(--soft)}
@@ -154,10 +154,20 @@ body[data-view="lab"] .hero h1 em{font-style:normal;color:var(--accent)}
 .studio input[type=checkbox]{width:18px;height:18px;accent-color:var(--day-accent)}
 
 /* contact */
-.contact{border-top:1px solid var(--line);margin-top:40px;padding-block:56px 72px}
+.contact{border-top:1px solid var(--line);margin-top:24px;padding-block:44px 56px}
 .contact .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px 56px;align-items:start}
 .contact h2{font-size:clamp(30px,4.4vw,54px);line-height:1.02}
 .todo{font-family:var(--f-mono);font-size:14px;border:1px dashed var(--soft);border-radius:8px;padding:2px 8px;color:var(--soft)}
+
+/* forms */
+.form{display:grid;gap:12px;align-content:start}
+.form h3{font-size:24px}
+.form label{display:grid;gap:5px;font-size:15px;font-weight:500}
+.form input,.form textarea{width:100%;min-height:44px;padding:10px 12px;border-radius:8px;border:1px solid var(--soft);background:var(--panel);color:var(--ink);font:inherit;font-size:16px;font-weight:400}
+.form textarea{min-height:104px;resize:vertical}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn[disabled]{opacity:.5;cursor:default}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 
 /* walk-in lab */
 .roomwrap{overflow-x:auto;border-radius:14px;border:1px solid var(--line)}
@@ -189,7 +199,7 @@ body[data-view="lab"] .hero h1 em{font-style:normal;color:var(--accent)}
 #rooms .btn[data-res="no"]{border-style:dashed;opacity:.6}
 #cvPath{display:block;width:100%;height:250px}
 #cvML{display:block;width:100%;height:220px;align-self:center}
-#cvHub{display:block;width:100%;height:290px}
+#cvHub{display:block;width:100%;height:320px;cursor:pointer}
 .card img{width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
 .nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
 .nums div{display:grid;gap:2px}
@@ -306,7 +316,7 @@ body[data-view="lab"] .hero h1 em{font-style:normal;color:var(--accent)}
             <button type="button" class="btn" data-les="tsp" aria-pressed="false">Silence trisynaptic</button>
             <button type="button" class="btn" data-les="msp" aria-pressed="false">Silence monosynaptic</button>
           </div>
-          <p id="lesSay" aria-live="polite" style="min-height:5.4em"></p>
+          <p id="lesSay" aria-live="polite" style="min-height:4.4em"></p>
           <span class="note">Solid line: trisynaptic pathway. Dashed line: monosynaptic pathway. Numbers are units per layer. Built in the Emergent simulator with Contrastive Hebbian Learning and theta-phase gating.</span>
         </div>
       </div>
@@ -407,7 +417,7 @@ body[data-view="lab"] .hero h1 em{font-style:normal;color:var(--accent)}
     <section class="hero">
       <span class="mono">Lab informatics / scientific software / freelance</span>
       <h1>I build the systems <em>lab data</em> lives in.</h1>
-      <p>Two years implementing SAPIO LIMS in GxP-regulated pharma labs, three years at the bench before that. Come in and look around: each numbered spot in the lab is part of my work.</p>
+      <p>Two years implementing LIMS in GxP-regulated pharma labs, three years at the bench before that. Come in and look around: each numbered spot in the lab is part of my work.</p>
     </section>
 
     <section class="sec" aria-label="The lab">
@@ -517,7 +527,7 @@ body[data-view="lab"] .hero h1 em{font-style:normal;color:var(--accent)}
         </ul>
         <div style="display:grid;gap:12px;align-content:start">
           <span class="mono">Stack</span>
-          <ul class="tags"><li>SAPIO LIMS</li><li>Java</li><li>Python</li><li>R</li><li>SQL</li><li>REST and SOAP APIs</li><li>AWS (S3, CDK)</li><li>Docker</li><li>CI/CD</li><li>Linux</li><li>React</li></ul>
+          <ul class="tags"><li>LIMS</li><li>Java</li><li>Python</li><li>R</li><li>SQL</li><li>REST and SOAP APIs</li><li>AWS (S3, CDK)</li><li>Docker</li><li>CI/CD</li><li>Linux</li><li>React</li></ul>
         </div>
       </div>
     </section>
@@ -528,18 +538,16 @@ body[data-view="lab"] .hero h1 em{font-style:normal;color:var(--accent)}
         <h2 id="h-hub">What I connected to the LIMS</h2>
         <p>A LIMS is only useful when data reaches it without retyping. Pick a system to see what I built.</p>
       </header>
-      <div class="panel two">
-        <canvas id="cvHub" role="img" aria-label="SAPIO LIMS at the centre, linked to AWS S3, Proscia Concentriq, plate readers, chromatography and balances and pH meters. The selected link is highlighted."></canvas>
-        <div style="display:grid;gap:14px">
+      <div class="panel" style="display:grid;gap:16px">
+        <canvas id="cvHub" role="img" aria-label="Data flowing from plate readers, chromatography, balances and pH meters and digital pathology into the LIMS, and from the LIMS to AWS S3. The selected route is highlighted."></canvas>
           <div class="row" id="hubs" role="group" aria-label="Pick an integration">
-            <button type="button" class="btn" data-hub="0" aria-pressed="true">AWS S3</button>
+            <button type="button" class="btn" data-hub="0" aria-pressed="true">LIMS to AWS S3</button>
             <button type="button" class="btn" data-hub="1" aria-pressed="false">Digital pathology</button>
             <button type="button" class="btn" data-hub="2" aria-pressed="false">Plate readers</button>
             <button type="button" class="btn" data-hub="3" aria-pressed="false">Chromatography</button>
             <button type="button" class="btn" data-hub="4" aria-pressed="false">Balances and pH meters</button>
           </div>
-          <p id="hubSay" aria-live="polite" style="min-height:6.2em"></p>
-        </div>
+          <p id="hubSay" aria-live="polite" style="min-height:3.2em"></p>
       </div>
     </section>
 
@@ -610,13 +618,33 @@ body[data-view="lab"] .hero h1 em{font-style:normal;color:var(--accent)}
 
 <footer class="contact" id="contactBlock">
   <div class="wrap">
-    <h2>Have a role or a lab data problem? Write to me.</h2>
-    <ul class="list">
-      <li><b>Email</b><span><a href="mailto:jefrithimoathi91@gmail.com">jefrithimoathi91@gmail.com</a></span></li>
-      <li><b>LinkedIn</b><span><a href="https://www.linkedin.com/in/jefri-thimoathi-johnson-8b94811a7">linkedin.com/in/jefri-thimoathi-johnson-8b94811a7</a></span></li>
-      <li><b>Freelance profiles</b><span>Upwork and Kolabtree</span></li>
-      <li><b>CV</b><span>Available on request</span></li>
-    </ul>
+    <div style="display:grid;gap:18px;align-content:start">
+      <h2>Have a role or a lab data problem? Write to me.</h2>
+      <ul class="list">
+        <li><b>Email</b><span><a href="mailto:jefrithimoathijohnson@gmail.com">jefrithimoathijohnson@gmail.com</a></span></li>
+        <li><b>LinkedIn</b><span><a href="https://www.linkedin.com/in/jefri-thimoathi-johnson-8b94811a7">linkedin.com/in/jefri-thimoathi-johnson-8b94811a7</a></span></li>
+        <li><b>Freelance profiles</b><span>Upwork and Kolabtree</span></li>
+      </ul>
+      <div><button type="button" class="btn" id="cvBtn" aria-expanded="false" aria-controls="cvForm">Request my CV</button></div>
+      <form class="form" id="cvForm" hidden>
+        <label for="cvName">Your name<input id="cvName" name="name" type="text" autocomplete="name" required></label>
+        <label for="cvOrg">Organisation and your role<input id="cvOrg" name="organisation_and_role" type="text" autocomplete="organization" required></label>
+        <label for="cvEmail">Email to send the CV to<input id="cvEmail" name="email" type="email" autocomplete="email" required></label>
+        <label for="cvNote">What do you need it for?<textarea id="cvNote" name="need" rows="3" required></textarea></label>
+        <input class="hp" type="text" name="_honey" id="cvHp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="row"><button type="submit" class="btn solid">Send CV request</button></div>
+        <p class="note" id="cvStatus" aria-live="polite"></p>
+      </form>
+    </div>
+    <form class="form" id="msgForm">
+      <h3>Send a message</h3>
+      <label for="msgName">Your name<input id="msgName" name="name" type="text" autocomplete="name" required></label>
+      <label for="msgEmail">Your email<input id="msgEmail" name="email" type="email" autocomplete="email" required></label>
+      <label for="msgText">Message<textarea id="msgText" name="message" rows="5" required></textarea></label>
+      <input class="hp" type="text" name="_honey" id="msgHp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="row"><button type="submit" class="btn solid">Send message</button></div>
+      <p class="note" id="msgStatus" aria-live="polite"></p>
+    </form>
   </div>
 </footer>
 
@@ -849,26 +877,82 @@ function drawML(){
   x.strokeStyle=NIGHT.warm; x.lineWidth=1.8; x.lineJoin='round'; x.stroke();
 }
 
-/* ---------- integration hub ---------- */
-var hubSel=0, HUB=[
-  ['AWS S3','AWS S3. I led this integration end to end over REST and SOAP APIs. It automated a semi-manual workflow and cut data-processing time by 50%. The supporting infrastructure was defined as code with AWS CDK.'],
-  ['Concentriq','Proscia Concentriq, a digital-pathology imaging system. I integrated it with the LIMS and kept the two in sync.'],
+/* ---------- integration map ---------- */
+var hubSel=0, hubRects=[], HUB=[
+  ['AWS S3','LIMS to AWS S3. I led this integration end to end over REST and SOAP APIs. It automated a semi-manual workflow and cut data-processing time by 50%. The supporting infrastructure was defined as code with AWS CDK.'],
+  ['Pathology','Digital pathology (Proscia Concentriq). I integrated the imaging system with the LIMS and kept the two in sync, so data moves both ways.'],
   ['Plate readers','Plate readers, integrated so assay data lands in the LIMS as part of the workflow.'],
-  ['CDS','Chromatography, connected through the chromatography data system. I also supported the CDS software for lab users.'],
+  ['Chromatography','Chromatography, connected through the chromatography data system. I also supported the CDS software for lab users.'],
   ['Balances, pH','Balances and pH meters, the everyday bench instruments, integrated with the LIMS.']];
+function bez(x0,y0,x1,y1,p){var mx=(x0+x1)/2, u=1-p; return [u*u*u*x0+3*u*u*p*mx+3*u*p*p*mx+p*p*p*x1, u*u*u*y0+3*u*u*p*y0+3*u*p*p*y1+p*p*p*y1];}
 function drawHub(t){
-  var a=fit($('#cvHub')), x=a[0], w=a[1], h=a[2], cx=w/2, cy=h/2, rx=Math.min(w*0.36,190), ry=h*0.34, i;
-  x.font='12px "IBM Plex Mono", monospace'; x.textAlign='center'; x.textBaseline='middle';
-  for(i=0;i<5;i++){var ang=(-90+i*72)*Math.PI/180, nx=cx+rx*Math.cos(ang), ny=cy+ry*Math.sin(ang), sel=i===hubSel;
-    x.strokeStyle=sel?DAY.accent:DAY.line; x.lineWidth=sel?2.4:1.4; x.beginPath(); x.moveTo(cx,cy); x.lineTo(nx,ny); x.stroke();
-    if(sel){for(var k=0;k<3;k++){var p=reduce?(0.25+k*0.25):((t*0.6+k/3)%1); x.fillStyle=DAY.flag; x.beginPath(); x.arc(nx+(cx-nx)*p,ny+(cy-ny)*p,3.4,0,TAU); x.fill();}}
-    x.beginPath(); x.arc(nx,ny,sel?10:7,0,TAU); x.fillStyle=sel?DAY.accent:'#ffffff'; x.fill(); x.strokeStyle=sel?DAY.accent:DAY.soft; x.lineWidth=1.5; x.stroke();
-    x.fillStyle=sel?DAY.ink:DAY.soft; x.fillText(HUB[i][0],Math.min(w-46,Math.max(46,nx)),ny+(Math.sin(ang)<-0.2?-20:22));
+  var a=fit($('#cvHub')), x=a[0], w=a[1], h=a[2], pad=8, lw=Math.max(96,Math.min(190,w*0.28)), cw=Math.max(84,Math.min(200,w*0.24)), rw=Math.max(74,Math.min(170,w*0.2));
+  var cx=(w-cw)/2, rx=w-pad-rw, left=[2,3,4,1], gap=10, ch=(h-2*pad-3*gap)/4, fs=lw<120?10.5:13, i, k;
+  var ly0=pad+6, lh=h-2*pad-12, tt=reduce?1.3:t;
+  hubRects=[];
+  // links from instruments to the LIMS
+  for(k=0;k<4;k++){i=left[k]; var y0=pad+k*(ch+gap)+ch/2, y1=ly0+lh*(0.3+k*0.15), sel=i===hubSel;
+    x.beginPath(); x.moveTo(pad+lw,y0); x.bezierCurveTo((pad+lw+cx)/2,y0,(pad+lw+cx)/2,y1,cx,y1);
+    x.strokeStyle=sel?DAY.accent:DAY.line; x.lineWidth=sel?3:1.6; x.stroke();
+    var n=sel?3:1, sp=sel?0.55:0.16;
+    for(var q=0;q<n;q++){var p=(tt*sp+q/n+k*0.23)%1; if(sel&&i===1&&q===1)p=1-p; var pt=bez(pad+lw,y0,cx,y1,p);
+      x.fillStyle=sel?DAY.flag:DAY.soft; x.globalAlpha=sel?1:0.55; x.beginPath(); x.arc(pt[0],pt[1],sel?4:2.6,0,TAU); x.fill(); x.globalAlpha=1;}
   }
-  var bw=116,bh=42; x.fillStyle=DAY.ink; x.fillRect(cx-bw/2,cy-bh/2,bw,bh); x.fillStyle='#ffffff'; x.font='500 13px "IBM Plex Mono", monospace'; x.fillText('SAPIO LIMS',cx,cy+1);
+  // LIMS to S3
+  var sy=ly0+lh/2, s3=hubSel===0;
+  x.strokeStyle=s3?DAY.accent:DAY.line; x.lineWidth=s3?3:1.6; x.beginPath(); x.moveTo(cx+cw,sy); x.lineTo(rx,sy); x.stroke();
+  for(q=0;q<(s3?3:1);q++){p=(tt*(s3?0.55:0.16)+q/3)%1; x.fillStyle=s3?DAY.flag:DAY.soft; x.globalAlpha=s3?1:0.55; x.beginPath(); x.arc(cx+cw+(rx-cx-cw)*p,sy,s3?4:2.6,0,TAU); x.fill(); x.globalAlpha=1;}
+  x.font='500 '+fs+'px "IBM Plex Mono", monospace'; x.textBaseline='middle';
+  // instrument cards
+  for(k=0;k<4;k++){i=left[k]; var cy=pad+k*(ch+gap); sel=i===hubSel;
+    x.fillStyle=sel?DAY.accent:'#ffffff'; x.strokeStyle=sel?DAY.accent:DAY.ink; x.lineWidth=1.6; x.beginPath(); x.rect(pad,cy,lw,ch); x.fill(); x.stroke();
+    var tx=pad+10, col=sel?'#ffffff':DAY.ink;
+    if(lw>=130){var gx=pad+12, gy=cy+ch/2; x.strokeStyle=col; x.fillStyle=col; x.lineWidth=1.8;
+      if(i===2){for(var d=0;d<6;d++){x.beginPath(); x.arc(gx+4+(d%3)*8,gy-4+Math.floor(d/3)*8,2.4,0,TAU); x.fill();}}
+      else if(i===3){x.beginPath(); x.moveTo(gx,gy+8); x.lineTo(gx+6,gy+8); x.lineTo(gx+10,gy-9); x.lineTo(gx+14,gy+8); x.lineTo(gx+18,gy+2); x.lineTo(gx+22,gy+8); x.stroke();}
+      else if(i===4){x.beginPath(); x.moveTo(gx+2,gy+8); x.lineTo(gx+20,gy+8); x.moveTo(gx+11,gy+8); x.lineTo(gx+11,gy-4); x.moveTo(gx+3,gy-5); x.lineTo(gx+19,gy-5); x.stroke();}
+      else {x.strokeRect(gx,gy-8,22,16); x.beginPath(); x.arc(gx+11,gy,4,0,TAU); x.fill();}
+      tx=pad+46;}
+    x.fillStyle=col; x.textAlign='left'; x.fillText(HUB[i][0],tx,cy+ch/2+1);
+    hubRects.push([i,pad,cy,lw,ch]);
+  }
+  // LIMS card with records arriving
+  x.fillStyle='#ffffff'; x.strokeStyle=DAY.ink; x.lineWidth=2; x.beginPath(); x.rect(cx,ly0,cw,lh); x.fill(); x.stroke();
+  x.fillStyle=DAY.ink; x.fillRect(cx,ly0,cw,30); x.fillStyle='#ffffff'; x.textAlign='center'; x.fillText('LIMS',cx+cw/2,ly0+16);
+  var rows=Math.max(4,Math.floor((lh-46)/22)), hot=Math.floor(tt*1.4)%rows;
+  for(k=0;k<rows;k++){var ry=ly0+44+k*((lh-52)/rows); x.fillStyle=k===hot?DAY.accent:'#c9d6d2'; x.fillRect(cx+10,ry,(cw-20)*(0.55+0.4*((k*7)%5)/5),6); x.fillStyle=k===hot?DAY.flag:'#c9d6d2'; x.beginPath(); x.arc(cx+cw-12,ry+3,3,0,TAU); x.fill();}
+  // S3 card
+  var sh=Math.min(110,lh*0.5), s0=sy-sh/2;
+  x.fillStyle=s3?DAY.accent:'#ffffff'; x.strokeStyle=s3?DAY.accent:DAY.ink; x.lineWidth=1.6; x.beginPath(); x.rect(rx,s0,rw,sh); x.fill(); x.stroke();
+  col=s3?'#ffffff':DAY.ink; x.strokeStyle=col; x.lineWidth=1.8; var bx=rx+rw/2, by=s0+sh*0.36;
+  x.beginPath(); x.moveTo(bx-14,by-10); x.lineTo(bx+14,by-10); x.lineTo(bx+9,by+12); x.lineTo(bx-9,by+12); x.closePath(); x.stroke();
+  x.beginPath(); x.ellipse(bx,by-10,14,4,0,0,TAU); x.stroke();
+  x.fillStyle=col; x.fillText('AWS S3',bx,s0+sh*0.76);
+  hubRects.push([0,rx,s0,rw,sh]);
+  x.fillStyle=DAY.soft; x.font=(fs-1.5)+'px "IBM Plex Mono", monospace'; if(rx-cx-cw>70)x.fillText('REST / SOAP',(cx+cw+rx)/2,sy-12);
   x.textBaseline='alphabetic';
 }
 function setHub(i){hubSel=i; document.querySelectorAll('#hubs button').forEach(function(b){b.setAttribute('aria-pressed',+b.dataset.hub===i?'true':'false');}); $('#hubSay').textContent=HUB[i][1]; if(reduce)still();}
+function hubClick(e){var r=$('#cvHub').getBoundingClientRect(), mx=e.clientX-r.left, my=e.clientY-r.top; hubRects.forEach(function(q){if(mx>=q[1]&&mx<=q[1]+q[3]&&my>=q[2]&&my<=q[2]+q[4])setHub(q[0]);});}
+
+/* ---------- contact forms ---------- */
+var MAILTO='jefrithimoathijohnson@gmail.com';
+function wireForm(form,status,subject){
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!form.reportValidity())return;
+    var data={_subject:subject,_template:'table'}, lines=[];
+    Array.prototype.forEach.call(form.elements,function(el){if(el.name&&el.type!=='submit'){data[el.name]=el.value; if(el.name!=='_honey')lines.push(el.name.replace(/_/g,' ')+': '+el.value);}});
+    var btn=form.querySelector('button[type=submit]'); btn.disabled=true; status.textContent='Sending…';
+    function fail(){btn.disabled=false; status.textContent=''; var s=document.createElement('span'); s.textContent='This could not be sent from here. '; var a=document.createElement('a'); a.href='mailto:'+MAILTO+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n')); a.textContent='Open it in your email app instead'; status.appendChild(s); status.appendChild(a); var s2=document.createElement('span'); s2.textContent=', or write to '+MAILTO+'.'; status.appendChild(s2);}
+    try{
+      fetch('https://formsubmit.co/ajax/'+MAILTO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+        .then(function(r){return r.json();})
+        .then(function(d){if(String(d.success)==='true'){form.reset(); btn.disabled=false; status.textContent='Sent. Thank you, I will reply by email.';}else fail();})
+        .catch(fail);
+    }catch(err){fail();}
+  });
+}
 
 /* ---------- perfusion ---------- */
 var perfT=75, perfOn=true, LANES=[
@@ -940,6 +1024,10 @@ document.querySelectorAll('#rooms button').forEach(function(b){b.addEventListene
 $('#season').addEventListener('click',function(){mus.season=1-mus.season; mus.right=0; mus.total=0; mus.deck=[]; musScore(); musDeal(); $('#fb').textContent='Season '+(mus.season+1)+'. Same paintings, same rooms, different rule.';});
 $('#showRules').addEventListener('click',function(){var r=$('#rules'); r.hidden=!r.hidden; this.setAttribute('aria-expanded',r.hidden?'false':'true'); this.textContent=r.hidden?'Show the rules':'Hide the rules';});
 $('#mlI').addEventListener('input',function(){ml.I=+this.value; mlRun(); if(reduce)still();});
+$('#cvHub').addEventListener('click',hubClick);
+$('#cvBtn').addEventListener('click',function(){var f=$('#cvForm'); f.hidden=!f.hidden; this.setAttribute('aria-expanded',f.hidden?'false':'true'); if(!f.hidden)$('#cvName').focus();});
+wireForm($('#msgForm'),$('#msgStatus'),'Message from the portfolio site');
+wireForm($('#cvForm'),$('#cvStatus'),'CV request from the portfolio site');
 $('#toContact').addEventListener('click',function(){$('#contactBlock').scrollIntoView({behavior:reduce?'auto':'smooth'});});
 window.addEventListener('hashchange',route);
 window.addEventListener('resize',still);
