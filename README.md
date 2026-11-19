@@ -8,4 +8,4 @@ Static site: no build step. Upload the whole folder to a GitHub repository named
 - `assets/hero-neuron*.webp` — hero figure; swap in your own cut-out photo later if you like (keep 801×1033, transparent background)
 - Contact form posts to FormSubmit. The first message triggers a confirmation email to you: click it once to activate.
 
-Site template by Rishi Thakor, used with permission. Lenis smooth scroll (MIT) in `vendor/`.
+
