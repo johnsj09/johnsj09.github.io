@@ -16,6 +16,15 @@
   };
   const ROOMS = ['lab.html', 'freelance.html', 'memory.html', 'vision.html', 'bench.html'];
   document.addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (!b) return; e.preventDefault(); go(b.dataset.go); });
+  // "Download CV": if the PDF isn't in assets/ yet, the CV request form opens instead
+  document.addEventListener('click', async e => {
+    const a = e.target.closest('[data-cvdl]'); if (!a || location.protocol === 'file:') return;
+    e.preventDefault();
+    let ok = false;
+    try { ok = (await fetch(a.href, { method: 'HEAD' })).ok; } catch (err) {}
+    if (!ok) return go('cv');
+    const t = document.createElement('a'); t.href = a.href; t.download = ''; document.body.appendChild(t); t.click(); t.remove();
+  });
   addEventListener('keydown', e => { if (e.key === 'Escape') go('close'); });
 
   // reveal: movement only once the room is lit; content is never hidden for good
