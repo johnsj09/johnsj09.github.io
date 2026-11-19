@@ -2237,10 +2237,8 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
       else { base += (target - base) * Math.min(1, dt * 6); if (Math.abs(target - base) < .0005) base = target; }
     }
     // auto: every few seconds the next room comes round to the front, unless someone is hovering, dragging or reading
-    if (!reduced && !NARROW.matches && !busy && hover < 0 && !dragging && now - idleAt > 4200 && inView){   // phones: it only turns when the visitor turns it target = baseFor((frontIndex() + 1) % N); idleAt = now; }
-    place(); drawSky(now / 1000);
-    if (inView && !document.hidden) raf = requestAnimationFrame(loop);
-  }
+        if (!reduced && !NARROW.matches && !busy && hover < 0 && !dragging && now - idleAt > 4200 && inView){ target = baseFor((frontIndex() + 1) % N); idleAt = now; }
+        
   const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
   const touch = () => { idleAt = performance.now() + 6000; };            // a person did something: hold still for a while
   const goTo = k => { touch(); target = baseFor(k); vel = 0; kick(); };
