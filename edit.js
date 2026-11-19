@@ -10,6 +10,7 @@
 // Text that the page's scripts write (the role animation, the clock, the orrery's room details, the periodic table…)
 // lives inside the code, not in the HTML, so it isn't outlined here.
 
+(() => {
 const els = window.__ed, txt = window.__edT;
 if (els){
   const idx = new Map(els.map((e, i) => [e, i]));
@@ -209,3 +210,4 @@ if (els){
     } finally { saving = false; }
   }
 }
+})();
