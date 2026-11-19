@@ -871,7 +871,13 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
   /* footer: space between the two research entries */
   .sf__cols>div:nth-child(3) li+li{margin-top:.55rem}
   /* back-to-top: smaller and tucked into the corner so it covers less text */
-  .totop{width:2.6rem;height:2.6rem;right:max(.75rem,env(safe-area-inset-right));bottom:max(.75rem,env(safe-area-inset-bottom))}
+    .totop{width:2.6rem;height:2.6rem;right:max(.75rem,env(safe-area-inset-right));bottom:max(.75rem,env(safe-area-inset-bottom))}
+  /* no borders, rounded edges or shadows between sections on phones */
+  .hero,.sf{border-radius:0 !important}
+  .orr__info{border:0 !important}
+  .story{border-top:0 !important;box-shadow:none !important}
+  .story__clock{border-bottom:0 !important;box-shadow:none !important}
+  .sf__cols{border-top:0 !important}
 }
 </style>
 </head>
