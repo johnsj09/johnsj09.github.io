@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Freelance — Jefri Thimoathi Johnson</title>
+<meta name="description" content="Freelance: part of Jefri Thimoathi Johnson's portfolio.">
+<link rel="icon" href="../favicon.ico">
+<link rel="preload" href="../fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="room.css">
+<script>try{if(localStorage.getItem('jtj-mode')==='dark')document.documentElement.dataset.mode='dark'}catch(e){}</script>
+<style>:root{--door:#2b3f5c}</style>
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+<header class="bar">
+  <a class="chip" href="../index.html#works" data-go="close">← <span class="long">Back to my work</span><span class="sr-only">Back</span></a>
+  <p class="bar__mid">Room 02 of 05 · Lab informatics</p>
+  <div class="bar__r"><a class="chip" href="../index.html#contact" data-go="cv"><span class="long">Request</span>CV</a><a class="chip chip--solid" href="../index.html#contact" data-go="contact">Contact</a></div>
+</header>
+<main id="main">
+  <p class="eyebrow rv"><i></i>Freelance</p>
+  <h1 class="rv">Lab software, sized for <em>small</em> teams.</h1>
+  <p class="lead rv">Right now I am designing and building a sample-management and data-visualisation platform for a research client: website first, app later. The details are under NDA, so this room shows the idea rather than the product.</p>
+  <div class="facts sec rv"><div class="fact"><b>Web</b><span>first release: a browser app the whole team can use</span></div><div class="fact"><b>App</b><span>next: the same records on a phone at the bench</span></div><div class="fact"><b>1</b><span>place to log, find and follow every sample</span></div><div class="fact"><b>NDA</b><span>client and data stay private; this page is a sketch</span></div></div>
+  <section class="sec rv">
+    <div class="sec__head"><div><h2>Where is that sample now?</h2></div><p>The question every lab asks daily. Here is the idea behind the system I'm building: each dot is a sample moving through its life. Hover a dot to follow it, or drop in a new batch.</p></div>
+    <div class="stage"><canvas id="viz-free" role="img" aria-label="Animated diagram: samples moving from received to registered, stored, processed and reported, with a live count at each stage"></canvas>
+      <div class="stage__cap"><p><b>A generic sketch</b>Illustrative only. The real system, its client and its data are covered by an NDA.</p><button class="tab" id="add-batch" type="button">+ Add a batch of 12</button></div></div>
+  </section>
+  <section class="sec two">
+    <div class="rv"><h2>What I can do for your lab</h2><ol class="list"><li data-n="01"><div><strong>Sample management</strong><span>Registration, storage locations, chain of custody and a clear history for every sample.</span></div></li><li data-n="02"><div><strong>Data you can see</strong><span>Dashboards and visualisations that turn lab records into answers.</span></div></li><li data-n="03"><div><strong>LIMS setup and configuration</strong><span>Data models, workflows and the metadata that makes searching possible.</span></div></li><li data-n="04"><div><strong>Integrations and clean-up</strong><span>Getting instrument exports, spreadsheets and old systems to talk to each other.</span></div></li></ol></div>
+    <div class="rv"><h2>How I work</h2><div class="card"><p>Small, regular releases you can try, not one big reveal at the end.</p><p>Plain-English updates, with the regulated-lab habits from pharma: versioned changes, testing, and documentation you can hand to someone else.</p><p>Based in Nottingham; happy to work remotely.</p></div></div>
+  </section>
+
+  <div class="next rv">
+    <div><small>Next room</small><strong>Memory &amp; Sleep</strong></div>
+    <div class="next__btns"><a class="chip" href="memory.html" data-go="door:2">Open the door →</a><a class="chip" href="../index.html#contact" data-go="contact">Work with me</a></div>
+  </div>
+</main>
+<footer>Jefri Thimoathi Johnson · Nottingham, UK · Press Esc to fly back out</footer>
+<script src="room.js"></script>
+</body>
+</html>

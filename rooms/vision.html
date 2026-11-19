@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Machine Vision — Jefri Thimoathi Johnson</title>
+<meta name="description" content="Machine Vision: part of Jefri Thimoathi Johnson's portfolio.">
+<link rel="icon" href="../favicon.ico">
+<link rel="preload" href="../fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="room.css">
+<script>try{if(localStorage.getItem('jtj-mode')==='dark')document.documentElement.dataset.mode='dark'}catch(e){}</script>
+<style>:root{--door:#8a5a2b}</style>
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+<header class="bar">
+  <a class="chip" href="../index.html#works" data-go="close">← <span class="long">Back to my work</span><span class="sr-only">Back</span></a>
+  <p class="bar__mid">Room 04 of 05 · Research</p>
+  <div class="bar__r"><a class="chip" href="../index.html#contact" data-go="cv"><span class="long">Request</span>CV</a><a class="chip chip--solid" href="../index.html#contact" data-go="contact">Contact</a></div>
+</header>
+<main id="main">
+  <p class="eyebrow rv"><i></i>Machine Vision</p>
+  <h1 class="rv">A car that learned to <em>see</em> the road.</h1>
+  <p class="lead rv">For my MSc machine-learning project I taught a small robot car to drive itself: a camera, a Raspberry Pi, and two neural networks small enough to run on it in real time.</p>
+  <div class="facts sec rv"><div class="fact"><b>87.8<small>%</small></b><span>R² for steering angle from the CNN</span></div><div class="fact"><b>98.2<small>%</small></b><span>R² for speed</span></div><div class="fact"><b>0.96</b><span>mAP@0.5 for the SSD-MobileNetV2 detector</span></div><div class="fact"><b>45<small>fps</small></b><span>on a Raspberry Pi 4</span></div></div>
+  <section class="sec two">
+    <div class="rv"><div class="img"><img src="car-detection.jpg" width="880" height="324" alt="Two frames from the car's camera: a tree and a person detected on the left, three left-arrow signs and a red traffic light detected on the right, each with a confidence score" loading="lazy"><span class="scan" aria-hidden="true"></span></div>
+      <p class="note">What the car sees: detections with their confidence scores, straight from the onboard model.</p></div>
+    <div class="rv"><h2>How it drives</h2><p class="lead" style="font-size:1.05rem">One network reads the camera and decides steering and speed; a second spots signs, lights and people and tells the car when to stop or turn.</p>
+      <div class="meters">
+        <div class="meter"><span>Steering (R²)</span><b>87.8%</b><i style="--v:87.8%"></i></div>
+        <div class="meter"><span>Speed (R²)</span><b>98.2%</b><i style="--v:98.2%"></i></div>
+        <div class="meter"><span>Detection (mAP@0.5)</span><b>0.96</b><i style="--v:96%"></i></div>
+      </div></div>
+  </section>
+  <section class="sec two">
+    <div class="rv"><h2>What I built</h2><ol class="list"><li data-n="01"><div><strong>Collected and labelled the data</strong><span>Driving footage from the car itself, labelled for steering, speed and objects.</span></div></li><li data-n="02"><div><strong>Trained a CNN driver</strong><span>Regression on steering angle and speed from single camera frames.</span></div></li><li data-n="03"><div><strong>Fine-tuned a detector</strong><span>SSD-MobileNetV2 for signs, traffic lights and people, small enough for the Pi.</span></div></li><li data-n="04"><div><strong>Put it on the road</strong><span>Both models running live on a SunFounder PiCar-V at 45 frames per second.</span></div></li></ol></div>
+    <div class="rv"><h2>Toolkit</h2><ul class="tags"><li>Python</li><li>Convolutional networks</li><li>SSD-MobileNetV2</li><li>Computer vision</li><li>Raspberry Pi 4</li><li>PiCar-V</li></ul>
+      <div class="card" style="margin-top:1.4rem"><p>MSc project at the University of Nottingham, supervised by Dr Maggie Lieu.</p></div></div>
+  </section>
+
+  <div class="next rv">
+    <div><small>Next room</small><strong>The Bench</strong></div>
+    <div class="next__btns"><a class="chip" href="bench.html" data-go="door:4">Open the door →</a><a class="chip" href="../index.html#contact" data-go="contact">Work with me</a></div>
+  </div>
+</main>
+<footer>Jefri Thimoathi Johnson · Nottingham, UK · Press Esc to fly back out</footer>
+<script src="room.js"></script>
+</body>
+</html>

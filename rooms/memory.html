@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memory &amp; Sleep — Jefri Thimoathi Johnson</title>
+<meta name="description" content="Memory &amp; Sleep: part of Jefri Thimoathi Johnson's portfolio.">
+<link rel="icon" href="../favicon.ico">
+<link rel="preload" href="../fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="room.css">
+<script>try{if(localStorage.getItem('jtj-mode')==='dark')document.documentElement.dataset.mode='dark'}catch(e){}</script>
+<style>:root{--door:#4a3a7a}</style>
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+<header class="bar">
+  <a class="chip" href="../index.html#works" data-go="close">← <span class="long">Back to my work</span><span class="sr-only">Back</span></a>
+  <p class="bar__mid">Room 03 of 05 · Research</p>
+  <div class="bar__r"><a class="chip" href="../index.html#contact" data-go="cv"><span class="long">Request</span>CV</a><a class="chip chip--solid" href="../index.html#contact" data-go="contact">Contact</a></div>
+</header>
+<main id="main">
+  <div class="hero2"><div>
+  <p class="eyebrow rv"><i></i>Memory &amp; Sleep</p>
+  <h1 class="rv">Rules, exceptions, and the <em>night</em> that sorts them.</h1>
+  <p class="lead rv">My dissertation asked how one memory system can learn the rule and remember the exception. The next question is what sleep does with both.</p>
+  </div>
+  <div class="hero2__fig rv"><canvas id="viz-brain" role="img" aria-label="A brain drawn as a network of neurons, with signals travelling between them. The selected region is highlighted."></canvas>
+    <div class="tabs" id="tabs-brain" role="group" aria-label="Highlight a brain region"><button class="tab" data-k="hip" aria-pressed="true">Hippocampus</button><button class="tab" data-k="front" aria-pressed="false">Frontal cortex</button><button class="tab" data-k="vis" aria-pressed="false">Visual cortex</button><button class="tab" data-k="sleep" aria-pressed="false">Thalamus &amp; brainstem</button></div>
+    <p class="hero2__say" id="say-brain" aria-live="polite"></p></div></div>
+  <div class="facts sec rv"><div class="fact"><b>18</b><span>paintings in the museum task I designed</span></div><div class="fact"><b>3</b><span>rooms, with one rule-breaking painting in each</span></div><div class="fact"><b>2</b><span>seasons, each sorting the paintings by a different rule</span></div><div class="fact"><b>1</b><span>manuscript in preparation with Dr Nick Myers</span></div></div>
+  <section class="sec rv">
+    <div class="sec__head"><div><h2>Two routes through one memory system</h2></div><p>How does a brain learn a general rule and still remember the one case that breaks it? I tested this in C-HORSE, a neural network model of the hippocampus. Silence a pathway and see what it was doing.</p></div>
+    <div class="tabs" id="tabs-hpc" role="group" aria-label="Silence a pathway"><button class="tab" data-k="none" aria-pressed="true">Intact</button><button class="tab" data-k="tsp" aria-pressed="false">Silence trisynaptic</button><button class="tab" data-k="msp" aria-pressed="false">Silence monosynaptic</button></div>
+    <div class="stage"><canvas id="viz-hpc" role="img" aria-label="Diagram of the hippocampal model: entorhinal cortex, dentate gyrus, CA3 and CA1, with the trisynaptic and monosynaptic pathways"></canvas>
+      <div class="stage__cap" id="cap-hpc" aria-live="polite"><p>Both pathways working. The model uses the season as a cue, switches between two conflicting rule sets, and avoids the catastrophic interference seen in single-system learners.</p></div></div>
+    <p class="note">Solid line: trisynaptic pathway. Dashed line: monosynaptic pathway. Numbers are units per layer. Built in Emergent with contrastive Hebbian learning and theta-phase gating.</p>
+  </section>
+  <section class="sec rv">
+    <div class="sec__head"><div><h2>Where I'm heading: one night, stage by stage</h2></div><p>Sleep is where memories are thought to be consolidated, and it's the research I want to do next. Drag across the night to watch the brain's activity change.</p></div>
+    <div class="stage"><canvas id="viz-sleep" role="img" aria-label="Hypnogram of a typical night with the EEG pattern of the current sleep stage"></canvas>
+      <div class="stage__cap" id="cap-sleep" aria-live="polite"><div><b>Awake</b><p>Relaxed with eyes closed, the EEG settles into alpha rhythm.</p></div></div></div>
+  </section>
+  <section class="sec two">
+    <div class="rv"><h2>The work</h2><ol class="list"><li data-n="01"><div><strong>Designed the task</strong><span>A museum whose sorting rules change with the season, with exceptions that test episodic memory.</span></div></li><li data-n="02"><div><strong>Built and trained the model</strong><span>C-HORSE in Emergent, learning from feedback without ever being told the rule.</span></div></li><li data-n="03"><div><strong>Lesioned it</strong><span>Silenced each pathway in turn to see which one carries rules and which carries episodes.</span></div></li><li data-n="04"><div><strong>Wrote it up</strong><span>MSc dissertation (Distinction); a manuscript is now in preparation.</span></div></li></ol></div>
+    <div class="rv"><h2>Toolkit</h2><ul class="tags"><li>Emergent</li><li>Python</li><li>Neural network models</li><li>Hippocampus</li><li>Sleep &amp; EEG</li><li>Cognitive modelling</li></ul>
+      <div class="card" style="margin-top:1.4rem"><p><strong>MSc Computational Neuroscience, Cognition &amp; AI</strong>, University of Nottingham, 2024 to 2025. Distinction.</p></div></div>
+  </section>
+
+  <div class="next rv">
+    <div><small>Next room</small><strong>Machine Vision</strong></div>
+    <div class="next__btns"><a class="chip" href="vision.html" data-go="door:3">Open the door →</a><a class="chip" href="../index.html#contact" data-go="contact">Work with me</a></div>
+  </div>
+</main>
+<footer>Jefri Thimoathi Johnson · Nottingham, UK · Press Esc to fly back out</footer>
+<script src="room.js"></script>
+</body>
+</html>
