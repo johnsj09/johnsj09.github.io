@@ -93,35 +93,6 @@ body.ready .rv{opacity:var(--to-o,1);transform:none}
 .line>span{display:block;transform:translateY(100%);opacity:0;transition:transform .9s var(--e-line) var(--d,0ms),opacity .9s var(--e-line) var(--d,0ms)}
 body.ready .line>span{transform:none;opacity:1}
 
-/* ---------- loader: the doors' colours stack up, one per discipline, then slides away to open the page ---------- */
-.loader{position:fixed;inset:0;z-index:120;overflow:hidden;color:#E6EBEA;--p:0;font-family:'Onest',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif}
-.ld__bg{position:absolute;inset:0;background:radial-gradient(38% 55% at 0% 72%,rgba(139,108,224,.26),transparent 70%),radial-gradient(40% 58% at 100% 70%,rgba(174,180,198,.16),transparent 72%),
-  radial-gradient(70% 60% at 50% 0%,rgba(90,80,140,.3),transparent 70%),#0D0C0C;transition:transform .85s cubic-bezier(.76,0,.24,1)}
-.loader.out .ld__bg{transform:translateY(-100%)}
-.ld__stack{--w:min(76vw,26rem);--h:calc(var(--w) * .27);--step:calc(var(--h) * .6);position:absolute;left:50%;top:47%;width:var(--w);height:calc(var(--h) + 5 * var(--step));translate:-50% -50%}
-@media (max-width:639.98px){.ld__stack{--w:min(78vw,20rem)}}
-.ld__pill{position:absolute;left:0;top:calc(var(--k) * var(--step));width:100%;height:var(--h);border-radius:999px;z-index:var(--k);
-  display:flex;align-items:flex-start;padding:calc(var(--h) * .2) 0 0 calc(var(--w) * .16);font-size:max(11px,calc(var(--w) * .036));font-weight:500;letter-spacing:.02em;
-  background:var(--c);
-  background:linear-gradient(180deg,color-mix(in srgb,var(--c) 88%,#fff) 0%,var(--c) 22%,var(--c) 70%,color-mix(in srgb,var(--c) 82%,#000) 100%);color:var(--t);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 -1px 0 rgba(0,0,0,.25),0 calc(var(--h) * -.18) calc(var(--h) * .35) calc(var(--h) * -.12) rgba(0,0,0,.55);
-  opacity:0;transform:translateY(-1.6rem) scale(.96);transition:opacity .45s ease,transform .75s cubic-bezier(.16,1,.3,1)}
-.ld__pill.on{opacity:1;transform:none}
-.ld__pill span{opacity:.82}
-.loader.out .ld__pill{transition:transform .8s cubic-bezier(.7,0,.25,1) calc(var(--k) * 45ms),opacity .5s ease calc(.25s + var(--k) * 45ms);opacity:0;
-  transform:translateX(calc(var(--dir) * 115vw)) rotate(calc(var(--dir) * 4deg))}
-.ld__hud{position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(1.25rem,4vw,3rem);transition:opacity .35s ease}
-.loader.out .ld__hud{opacity:0}
-.ld__top{display:flex;justify-content:space-between;align-items:center;font-size:.8125rem;font-weight:500;color:rgba(230,235,234,.7)}
-.ld__top b{font-weight:600;color:#E6EBEA}
-.ld__bot{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem}
-.ld__num{font-size:clamp(3.5rem,9vw,7.5rem);font-weight:700;line-height:.85;letter-spacing:-.05em;font-variant-numeric:tabular-nums;color:#E6EBEA}
-.ld__num small{display:block;margin-bottom:.9rem;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.6875rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(230,235,234,.62)}
-.ld__bar{width:min(30vw,14rem);height:2px;border-radius:2px;background:rgba(230,235,234,.14);overflow:hidden;margin-bottom:.5rem}
-.ld__bar i{display:block;height:100%;background:linear-gradient(90deg,#4F5A6B,#AEB4C6,#D6B26E);transform-origin:0 50%;transform:scaleX(var(--p))}
-@media (max-width:639.98px){.ld__top span:last-child{display:none}.ld__bar{width:34vw}}
-@media (prefers-reduced-motion:reduce){.ld__pill{transform:none;transition:opacity .3s ease}.loader.out .ld__pill{transform:none}.ld__bg{transition:opacity .4s ease}.loader.out .ld__bg{transform:none;opacity:0}}
-
 /* ---------- header ---------- */
 .hdr{position:fixed;inset-inline:0;top:0;z-index:50;transition:background .35s ease,box-shadow .35s ease,opacity .35s ease,translate .45s var(--e-soft);--from:translateY(-14px);--d:150ms;--ease:var(--e-spring)}
 .hdr.stuck{background:var(--background);box-shadow:0 1px 0 rgba(var(--fg-rgb),.08)}
@@ -518,7 +489,7 @@ html[data-mode="dark"] .orr{--o-ink:#ECE9FB;--o-mut:#b9b3dc;--o-acc:#b6a4ff;--o-
 /* the stage: the orbits are drawn on the sky canvas; the orbs are real buttons placed by script */
 .orr__stage{position:absolute;inset:0;z-index:2;touch-action:pan-y;cursor:grab}
 .orr__stage.drag{cursor:grabbing}
-.orr__core{position:absolute;left:var(--cx,50%);top:var(--cy,60%);width:4.6rem;height:4.6rem;margin:-2.3rem 0 0 -2.3rem;border-radius:50%;z-index:50;display:grid;place-items:center;
+.orr__core{position:absolute;left:var(--cx,50%);top:var(--cy,60%);width:4.6rem;height:4.6rem;margin:-2.3rem 0 0 -2.3rem;border-radius:50%;z-index:1;display:grid;place-items:center;
   background:radial-gradient(circle at 40% 35%,#fffaf3,#ffe1cc 60%,#ffc6a3);box-shadow:0 0 0 1px rgba(255,255,255,.6),0 0 3rem 1.2rem rgba(255,182,144,.55),0 0 8rem 3rem rgba(255,182,144,.25);
   font:700 1rem/1 'Onest',sans-serif;letter-spacing:.04em;color:#3a2550;pointer-events:none}
 html[data-mode="dark"] .orr__core{box-shadow:0 0 0 1px rgba(255,255,255,.4),0 0 3rem 1.2rem rgba(255,182,144,.45),0 0 9rem 3rem rgba(139,108,224,.35)}
@@ -536,7 +507,7 @@ html[data-mode="dark"] .orb__ball{background:radial-gradient(circle at 36% 30%,r
 html[data-mode="dark"] .orb__ball::after{background:rgba(255,255,255,.38)}
 .orb__ic{position:absolute;left:50%;top:52%;width:58%;height:58%;transform:translate(-50%,-50%);color:#fff}
 .orb__ring{position:absolute;left:-22%;right:-22%;top:38%;height:24%;border-radius:50%;border:2px solid color-mix(in srgb,var(--g) 75%,transparent);transform:rotate(-14deg) scale(.8);opacity:0;transition:opacity .4s ease,transform .5s var(--e-spring);pointer-events:none}
-.orb__lbl{position:absolute;left:50%;top:calc(100% + .7rem);transform:translateX(-50%);white-space:nowrap;text-align:center;font-size:1.0625rem;font-weight:600;color:var(--o-ink);line-height:1.2;transition:opacity .3s ease}
+.orb__lbl{position:absolute;left:50%;top:calc(100% + .7rem);transform-origin:50% 0;transform:translateX(-50%);white-space:nowrap;text-align:center;font-size:1.0625rem;font-weight:600;color:var(--o-ink);line-height:1.2;transition:opacity .3s ease}
 .orb__lbl small{display:block;font:500 .75rem/1.3 ui-monospace,'SF Mono',Menlo,monospace;color:var(--o-mut)}
 .orb.on .orb__ring{opacity:1;transform:rotate(-14deg) scale(1)}
 .orb.on{--glow:.85}
@@ -561,7 +532,8 @@ html:not([data-mode="dark"]) .orrfly{background:radial-gradient(circle at var(--
   .orr__in{display:contents}
   .orr__head{order:1;position:relative;z-index:3;padding:4.75rem 1.25rem 0}
   .orr__stage{order:2}.orr__info{order:3;position:relative;z-index:3}.orr__ctl{order:4}
-  .orr__stage{height:17.5rem !important;margin-top:.5rem !important}
+  .orr__stage{height:21rem !important;margin-top:.5rem !important}
+  .orr__core{width:2.4rem;height:2.4rem;margin:-1.2rem 0 0 -1.2rem;font-size:0}
   .orr__h{font-size:2.15rem}
   .orr__sub{font-size:.9375rem;margin-top:.6rem}
   .orr__stage{position:relative;inset:auto;height:24rem;margin-top:.5rem}
@@ -879,26 +851,6 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
 
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- ============ PageLoader ============ -->
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="ld__bg"></div>
-  <div class="ld__stack">
-    <div class="ld__pill" style="--k:0;--c:#121A1E;--t:#E6EBEA;--dir:1"><span>Jefri Thimoathi Johnson</span></div>
-    <div class="ld__pill" style="--k:1;--c:#1d5c57;--t:#E6EBEA;--dir:-1"><span>Lab informatics</span></div>
-    <div class="ld__pill" style="--k:2;--c:#2b3f5c;--t:#E6EBEA;--dir:1"><span>LIMS &amp; integrations</span></div>
-    <div class="ld__pill" style="--k:3;--c:#4a3a7a;--t:#E6EBEA;--dir:-1"><span>Computational neuroscience</span></div>
-    <div class="ld__pill" style="--k:4;--c:#8b6cd8;--t:#F7F5FF;--dir:1"><span>Sleep &amp; memory</span></div>
-    <div class="ld__pill" style="--k:5;--c:#AEB4C6;--t:#121A1E;--dir:-1"><span>Machine learning</span></div>
-  </div>
-  <div class="ld__hud">
-    <div class="ld__top"><span><b>Jefri Thimoathi Johnson</b> · Portfolio</span><span>Lab informatics · computational neuroscience</span></div>
-    <div class="ld__bot">
-      <p class="ld__num"><small>Booting up the lab</small><span id="ldCount">000</span></p>
-      <div class="ld__bar"><i></i></div>
-    </div>
-  </div>
-</div>
-
 <!-- ============ Header ============ -->
 <header class="hdr rv">
   <div class="shell hdr__in">
@@ -944,7 +896,7 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
       <div class="fig" id="fig">
         <img id="figBase" src="assets/hero-photo-bw.webp" alt="" decoding="async" fetchpriority="high" aria-hidden="true">
         <canvas id="figCanvas" aria-hidden="true"></canvas>
-        <button class="fig__card" id="ptabOpen" aria-haspopup="dialog" aria-controls="ptab"><b><small>21</small>Jj</b>The elements I'm made of</button>
+        <button class="fig__card" id="ptabOpen" aria-haspopup="dialog" aria-controls="ptab"><b><small>21</small>Jj</b>Who I am</button>
       </div>
     </div>
 
@@ -1229,7 +1181,7 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
 <div class="ptab" id="ptab" role="dialog" aria-modal="true" aria-labelledby="ptabTitle" hidden>
   <div class="shell ptab__in">
     <div class="ptab__top">
-      <div><p class="ptab__eye">Jefri Thimoathi Johnson</p><h2 class="ptab__h" id="ptabTitle">The elements I'm made of</h2></div>
+      <div><p class="ptab__eye">Jefri Thimoathi Johnson</p><h2 class="ptab__h" id="ptabTitle">Who I am</h2></div>
       <button type="button" class="ptab__x" id="ptabClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>Close</button>
     </div>
     <div class="ptab__body">
@@ -2143,6 +2095,8 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   const sec = $('#works'); if (!sec) return;
   const stage = $('#orrStage'), sky = $('.orr__sky', sec), ctx = sky.getContext('2d');
   const orbs = [...sec.querySelectorAll('.orb')], N = orbs.length, STEP = Math.PI * 2 / N;
+  // each room has its own orbit, earliest inside to newest outside: Lab, Freelance, Memory & Sleep, Machine Vision, The Bench
+  const ORBIT = [.64, 1, .76, .88, .52];
   const info = $('#orrInfo'), dots = [...sec.querySelectorAll('.orr__dots i')];
   const NARROW = matchMedia('(max-width: 899.98px)');
   orbs.forEach((o, i) => o.setAttribute('aria-label', `${TITLES[i]}, ${INFO[i][0]}: fly in`));
@@ -2156,10 +2110,10 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   function measure(){
     const r = stage.getBoundingClientRect(); W = r.width; H = r.height;
     const narrow = NARROW.matches;
-    cx = W / 2; cy = narrow ? H * .46 : H * .63;
-    Rx = narrow ? Math.min(W * .31, 230) : Math.min(W * .34, 560);
-    Ry = Rx * (narrow ? .3 : .27);
-    D = narrow ? Math.min(W * .3, 140) : Math.min(Math.max(W * .11, 120), 200);
+    cx = W / 2; cy = narrow ? H * .45 : H * .63;
+    Rx = narrow ? Math.min(W * .39, 260) : Math.min(W * .34, 560);
+    Ry = Rx * (narrow ? .66 : .27);
+    D = narrow ? Math.min(W * .21, 100) : Math.min(Math.max(W * .11, 120), 200);
     stage.style.setProperty('--cx', cx + 'px'); stage.style.setProperty('--cy', cy + 'px');
     const s = sec.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2);
     sky.width = Math.round(s.width * dpr); sky.height = Math.round(s.height * dpr);
@@ -2170,14 +2124,14 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   function place(){
     for (let k = 0; k < N; k++){
       const a = base + k * STEP, d = (Math.cos(a) + 1) / 2;                 // d: 1 at the front, 0 at the back
-      const x = cx + Rx * Math.sin(a), y = cy + Ry * Math.cos(a) - (1 - d) * Ry * .25;
-      const sc = .42 + .58 * d, o = orbs[k];
+      const f = ORBIT[k], x = cx + Rx * f * Math.sin(a), y = cy + Ry * f * Math.cos(a);
+      const sc = .6 + .4 * d, o = orbs[k];
       o.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) scale(${sc.toFixed(3)})`;
       o.style.setProperty('--d', D + 'px');
       o.style.zIndex = Math.round(d * 100) + (Math.cos(a) > 0 ? 60 : 0);
-      o.style.filter = d < .55 ? `blur(${((.55 - d) * 4).toFixed(2)}px)` : '';
-      o.style.opacity = (.55 + .45 * d).toFixed(3);
-      o.querySelector('.orb__lbl').style.opacity = d > .3 ? Math.min(1, (d - .3) * 2.2).toFixed(2) : 0;
+      o.style.filter = '';
+      o.style.opacity = 1;
+      const lbl = o.querySelector('.orb__lbl'); lbl.style.opacity = 1; lbl.style.transform = `translateX(-50%) scale(${(1 / sc).toFixed(3)})`;
     }
     const f = frontIndex(); setShown(hover >= 0 ? hover : f);
     orbs.forEach((o, k) => o.classList.toggle('on', k === (hover >= 0 ? hover : f)));
@@ -2213,11 +2167,11 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
       ctx.beginPath(); ctx.arc(s.x + px * s.r, yy + py * s.r, dark ? s.r : s.r * 1.4, 0, 6.29); ctx.fill();
     }
     ctx.globalAlpha = 1;
-    // orbits: the rooms' ring and two inner ones, in the stage's coordinates
+    // orbits: one for each room; the room in focus has its orbit drawn brighter
     const oy = skyOff + cy, line = dark ? '230,220,255' : '122,106,154';
-    [[1, .42], [.68, .3], [.42, .22]].forEach(([k, a]) => {
-      ctx.strokeStyle = `rgba(${line},${a})`; ctx.lineWidth = 1.2;
-      ctx.beginPath(); ctx.ellipse(cx, oy - (k === 1 ? 0 : Ry * .1), Rx * k, Ry * k, -.02, 0, 6.29); ctx.stroke(); });
+    ORBIT.forEach((f, k) => {
+      ctx.strokeStyle = `rgba(${line},${k === shown ? .6 : .26})`; ctx.lineWidth = k === shown ? 1.6 : 1.1;
+      ctx.beginPath(); ctx.ellipse(cx, oy, Rx * f, Ry * f, 0, 0, 6.29); ctx.stroke(); });
     // now and then, a shooting star
     if (dark && !reduced){
       if (!shoot && Math.random() < .004) shoot = { x: w * (.55 + Math.random() * .4), y: h * Math.random() * .3, t: 0 };
@@ -2236,9 +2190,11 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
       if (Math.abs(vel) > .0004){ base += vel; vel *= .92; target = base; if (Math.abs(vel) <= .0004) target = baseFor(frontIndex()); }
       else { base += (target - base) * Math.min(1, dt * 6); if (Math.abs(target - base) < .0005) base = target; }
     }
-    // auto: every few seconds the next room comes round to the front, unless someone is hovering, dragging or reading
-        if (!reduced && !NARROW.matches && !busy && hover < 0 && !dragging && now - idleAt > 4200 && inView){ target = baseFor((frontIndex() + 1) % N); idleAt = now; }
-        
+    // auto (desktop only): every few seconds the next room comes round to the front, unless someone is hovering, dragging or reading
+    if (!reduced && !NARROW.matches && !busy && hover < 0 && !dragging && now - idleAt > 4200 && inView){ target = baseFor((frontIndex() + 1) % N); idleAt = now; }
+    place(); drawSky(now / 1000);
+    if (inView && !document.hidden) raf = requestAnimationFrame(loop);
+  }
   const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
   const touch = () => { idleAt = performance.now() + 6000; };            // a person did something: hold still for a while
   const goTo = k => { touch(); target = baseFor(k); vel = 0; kick(); };
@@ -2386,61 +2342,18 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   base = target = baseFor(2); place();
 })();
 
-/* ---------- PageLoader: the rooms' colours stack up as the page loads, then slides apart to open it ---------- */
-const loader = $('#loader');
-// back from a door's page (#works): skip the intro and stand in front of the doors again
-// (#about and #contact come from the links in a room's navbar and footer)
-if (['#works', '#about', '#contact'].includes(location.hash)){
-  loader.remove();
+/* ---------- Opening: no loading screen. The hero plays its entrance as soon as the page is up ---------- */
+// coming back from a room's own page (#works), or a link to #about / #contact: land in the right place
+requestAnimationFrame(() => {
   document.body.classList.add('ready');
-  const wantContact = location.hash === '#contact';
-  requestAnimationFrame(() => {
-    if (wantContact) setTimeout(() => openModal(), 400);
-    const el = $(location.hash === '#about' ? '#about' : '#works');
+  const h = location.hash;
+  if (['#works', '#about', '#contact'].includes(h)){
+    const el = $(h === '#about' ? '#about' : '#works');
     if (el) window.scrollTo(0, el.getBoundingClientRect().top + pageYOffset);
-    dispatchEvent(new Event('intro:ready'));
-  });
-} else {
-  stopScroll();
-  // whatever happens in the intro, the site always opens: any error, or an intro that hasn't finished in 9 s, lets you straight in
-  let introDone = false;
-  const bailOut = () => {
-    if (introDone) return; introDone = true;
-    try { loader.remove(); } catch (e) {}
-    document.body.classList.add('ready'); startScroll(); dispatchEvent(new Event('intro:ready'));
-  };
-  window.__introBail = bailOut;
-  setTimeout(bailOut, 9000);
-  try {
-  const num = $('#ldCount'), pills = [...loader.querySelectorAll('.ld__pill')];
-  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-  // real progress: fonts first, then the page's images; the counter never runs ahead of what has actually loaded
-  let ready = .55;
-  document.fonts?.ready.then(() => { ready = Math.max(ready, .85); });
-  const loaded = () => { ready = 1; };
-  if (document.readyState === 'complete') loaded(); else addEventListener('load', loaded, { once: true });
-  setTimeout(loaded, 5000);                               // never keep anyone waiting long
-  // one colour joins the stack for each sixth of the way
-  const paint = p => { loader.style.setProperty('--p', p.toFixed(3)); pills.forEach((el, k) => el.classList.toggle('on', p >= k / 6 + .02 || p >= 1)); };
-  const FILL = 1600;
-  let t0 = null, shown = 0;
-  function loadTick(now){
-    if (t0 === null) t0 = now;
-    const want = Math.min(ease(Math.min(1, (now - t0) / FILL)), ready);
-    shown += (want - shown) * .18; if (want - shown < .002) shown = want;
-    paint(shown);
-    num.textContent = String(Math.round(shown * 100)).padStart(3, '0');
-    if (shown < 1) requestAnimationFrame(t => { try { loadTick(t); } catch (e) { bailOut(); } }); else setTimeout(finish, 520);   // the last colour lands, then it opens
+    if (h === '#contact') setTimeout(() => openModal(), 400);
   }
-  function finish(){
-    loader.classList.add('out');                             // the colours slide away and the curtain lifts
-    setTimeout(() => document.body.classList.add('ready'), 260);   // the hero plays its entrance as it is uncovered
-    setTimeout(bailOut, 1250);
-  }
-  if (reduced){ num.textContent = '100'; paint(1); setTimeout(finish, 500); }
-  else requestAnimationFrame(t => { try { loadTick(t); } catch (e) { bailOut(); } });
-  } catch (e) { bailOut(); }
-}
+  dispatchEvent(new Event('intro:ready'));
+});
 
 /* ---------- Clean routes: the address bar reads /home, /work or /my-story as you move through the page ---------- */
 (() => {
