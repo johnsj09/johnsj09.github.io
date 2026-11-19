@@ -87,14 +87,14 @@ svg{display:block;width:1em;height:1em;flex:none}
 .skip:focus{position:fixed;left:1rem;top:1rem;z-index:60;min-height:44px;display:inline-flex;align-items:center;border-radius:var(--radius-control);background:var(--ink);padding:.5rem 1rem;font-size:.875rem;color:#fff}
 
 /* ---------- reveal system (plays once body.ready is set) ---------- */
-.rv{opacity:0;transform:var(--from,translateY(10px));transition:opacity .8s var(--ease,var(--e-soft)) var(--d,0ms),transform .8s var(--ease,var(--e-soft)) var(--d,0ms)}
+.rv{opacity:0;transform:var(--from,translateY(10px));transition:opacity .5s var(--ease,var(--e-soft)) var(--d,0ms),transform .5s var(--ease,var(--e-soft)) var(--d,0ms)}
 body.ready .rv{opacity:var(--to-o,1);transform:none}
 .line{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
-.line>span{display:block;transform:translateY(100%);opacity:0;transition:transform .9s var(--e-line) var(--d,0ms),opacity .9s var(--e-line) var(--d,0ms)}
+.line>span{display:block;transform:translateY(100%);opacity:0;transition:transform .55s var(--e-line) var(--d,0ms),opacity .55s var(--e-line) var(--d,0ms)}
 body.ready .line>span{transform:none;opacity:1}
 
 /* ---------- header ---------- */
-.hdr{position:fixed;inset-inline:0;top:0;z-index:50;transition:background .35s ease,box-shadow .35s ease,opacity .35s ease,translate .45s var(--e-soft);--from:translateY(-14px);--d:150ms;--ease:var(--e-spring)}
+.hdr{position:fixed;inset-inline:0;top:0;z-index:50;transition:background .35s ease,box-shadow .35s ease,opacity .35s ease,translate .45s var(--e-soft);--from:translateY(-14px);--d:0ms;--ease:var(--e-spring)}
 .hdr.stuck{background:var(--background);box-shadow:0 1px 0 rgba(var(--fg-rgb),.08)}
 .hdr.stuck .hdr__in{padding-block:.85rem}
 .hdr.away{opacity:0;translate:0 -100%;pointer-events:none}
@@ -113,7 +113,7 @@ body.ready .line>span{transform:none;opacity:1}
 .nav button>span{display:inline-flex;align-items:center;gap:.25rem;opacity:.8}
 .caret{font-size:.75rem;opacity:.6}
 .hdr__right{display:flex;align-items:center;gap:.75rem}
-.chip{border:1px solid var(--chip-line);background:var(--chip-bg);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border-radius:var(--radius-control)}
+.chip{border:1px solid var(--chip-line);background:var(--chip-bg);border-radius:var(--radius-control)}
 .clock{display:flex;flex:none;white-space:nowrap;align-items:center;gap:.75rem;padding:.6rem .9rem;font-size:.875rem;color:rgba(var(--fg-rgb),.7)}
 .clock__ds{display:none;font-weight:500}
 
@@ -145,7 +145,7 @@ html[data-mode="dark"] .hero::before{opacity:1}
 /* the portrait (liquid reveal stage) */
 .hero__stage{position:absolute;inset:0;z-index:2;pointer-events:none}
 .fig{position:absolute;bottom:var(--bar-h);left:50%;height:var(--fig-h);aspect-ratio:801/1033;
-  opacity:0;transition:opacity 1.1s var(--e-soft) 120ms,transform 1.3s var(--e-soft) 120ms;transform:translate(-50%,2.5rem)}
+  opacity:0;transition:opacity .6s var(--e-soft),transform .7s var(--e-soft);transform:translate(-50%,1.5rem)}
 body.ready .fig{opacity:1;transform:translate(-50%,0)}
 @media (min-width:1024px){
   .fig{height:min(calc(100% - var(--bar-h) - 6rem),58rem,calc((min(100vw,var(--container-shell)) - 2 * var(--gut-lg)) * .44 * 1033 / 801));left:auto;right:calc(max(0px,(100% - var(--container-shell)) / 2) + var(--gut-lg));transform:translateY(2.5rem)}
@@ -241,7 +241,7 @@ body.ready .fig{opacity:1;transform:translate(-50%,0)}
 .cal-line{display:block;padding-top:.34em;margin-top:.1em;padding-bottom:.42em}
 .cal{--cal-w:7em;position:relative;display:inline-block;font-size:.9em;perspective:14em;perspective-origin:30% 0;vertical-align:top;
   --from:translateY(.5em) rotateX(-18deg);--ease:var(--e-soft)}
-.cal.rv{transition-duration:1.1s}
+.cal.rv{transition-duration:.6s}
 .cal__body{position:relative;display:block;width:var(--cal-w);height:1.72em;transform:rotateX(10deg) rotateY(-9deg);transform-style:preserve-3d;transition:width .5s var(--e-soft)}
 .cal__stand{position:absolute;left:.2em;right:-.14em;top:.28em;bottom:-.4em;border-radius:.26em;
   background:linear-gradient(165deg,#3a3a3a 0%,#141414 40%,#050505 100%);
@@ -312,7 +312,7 @@ body.ready .fig{opacity:1;transform:translate(-50%,0)}
 .partners li svg{font-size:.875rem;color:rgba(var(--fg-rgb),.4)}
 
 /* status bar */
-.hero__bar{position:relative;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:.75rem;height:var(--bar-h);border-top:1px solid rgba(var(--fg-rgb),.1);font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.025em;color:rgba(var(--fg-rgb),.72);--from:none;--d:900ms}
+.hero__bar{position:relative;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:.75rem;height:var(--bar-h);border-top:1px solid rgba(var(--fg-rgb),.1);font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.025em;color:rgba(var(--fg-rgb),.72);--from:none;--d:300ms}
 /* ---------- my story: a timeline you scroll through naturally; the year and title stay beside it ---------- */
 .story{position:relative;z-index:1;background:#F0F4F3;border-top:1px solid rgba(18,26,30,.1);box-shadow:inset 0 1.75rem 2.25rem -1.75rem rgba(18,26,30,.14);--warm:0}
 html[data-mode="dark"] .story{background:#121226;border-top-color:rgba(230,235,234,.08);box-shadow:inset 0 1.75rem 2.25rem -1.75rem rgba(0,0,0,.6)}
@@ -909,14 +909,14 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
 
     <div class="shell hero__content">
       <div class="hero__left">
-        <p class="hname rv" style="--d:200ms"><span class="hname__n">Jefri Thimoathi Johnson</span><span class="hname__tag"><span class="by-day">Lab informatics</span><span class="by-night">Computational neuroscience</span></span></p>
+        <p class="hname rv" style="--d:40ms"><span class="hname__n">Jefri Thimoathi Johnson</span><span class="hname__tag"><span class="by-day">Lab informatics</span><span class="by-night">Computational neuroscience</span></span></p>
         <h1 class="h1">
           <span class="sr-only">Hi, I'm Jefri. I am a lab informatics engineer and LIMS developer by day, and a computational neuroscientist working on memory and sleep by night.</span>
           <span aria-hidden="true">
-            <span class="line"><span style="--d:250ms">Hi, I'm Jefri.</span></span>
-            <span class="line"><span class="soft" style="--d:370ms">I am a</span></span>
+            <span class="line"><span style="--d:80ms">Hi, I'm Jefri.</span></span>
+            <span class="line"><span class="soft" style="--d:140ms">I am a</span></span>
             <span class="cal-line">
-              <span class="cal rv" id="cal" style="--d:520ms">
+              <span class="cal rv" id="cal" style="--d:200ms">
                 <span class="cal__body">
                   <span class="cal__stand"></span>
                   <span class="cal__stack">
@@ -934,7 +934,7 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
             </span>
           </span>
         </h1>
-        <div class="ctas rv" style="--d:750ms">
+        <div class="ctas rv" style="--d:280ms">
           <button class="pill pill--dark pill--arrow" data-contact>
             <span class="pill__in" data-h="s 1 1.04" data-hs="320 18" data-ht=".pill">Work with me
               <span class="pill__badge"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-h="x 0 3" data-hs="320 18" data-ht=".pill"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
@@ -1276,9 +1276,6 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
   </div>
 </div>
 
-<script type="importmap">
-{ "imports": { "lenis": "./vendor/lenis.min.mjs" } }
-</script>
 <script type="module">
 const COLOUR_SRC = "assets/hero-photo.webp";   // the colour photo, revealed under the cursor
 const $ = (s, r = document) => r.querySelector(s);
@@ -1601,7 +1598,7 @@ bindHovers();
       timer = setTimeout(flip, HOLD);
     };
   }
-  const start = () => { if (started) return; started = true; timer = setTimeout(flip, 1300); };
+  const start = () => { if (started) return; started = true; timer = setTimeout(flip, 900); };
   if (document.body.classList.contains('ready')) start(); else addEventListener('intro:ready', start, { once: true });
 })();
 
@@ -1946,52 +1943,41 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
     }
     return out;
   }
-  function knobPath(c){
-    c.beginPath();
-    c.moveTo(-3.1, 6.2);
-    c.bezierCurveTo(-3.6, 10.5, -9.6, 13.5, -9.6, 22.5);
-    c.bezierCurveTo(-9.6, 30.5, -5.4, 35, 0, 35);
-    c.bezierCurveTo(5.4, 35, 9.6, 30.5, 9.6, 22.5);
-    c.bezierCurveTo(9.6, 13.5, 3.6, 10.5, 3.1, 6.2);
-    c.closePath();
-  }
+  // the pendant hangs from the end of the chain: a small cap, then a glass orb (radius 13, centre 21 below the cap)
+  const OR = 13, OC = 21;
   function drawKnob(c, x, y, ang, shadowOnly){
     c.save();
     c.translate(x, y); c.rotate(ang - Math.PI / 2); c.scale(knobS, knobS);
-    if (shadowOnly){
-      knobPath(c); c.fill();
-      c.fillRect(-3.4, -.5, 6.8, 7.5);
-      c.restore(); return;
-    }
-    // brass ferrule where the cord is crimped
+    if (shadowOnly){ c.beginPath(); c.arc(0, OC, OR, 0, Math.PI * 2); c.fill(); c.restore(); return; }
+    const dark = root.dataset.mode === 'dark';
+    // a soft glow around the orb
+    const gl = c.createRadialGradient(0, OC, OR * .4, 0, OC, OR * 2.3);
+    gl.addColorStop(0, dark ? 'rgba(139,108,224,.5)' : 'rgba(255,190,150,.55)'); gl.addColorStop(1, 'rgba(255,190,150,0)');
+    c.fillStyle = gl; c.beginPath(); c.arc(0, OC, OR * 2.3, 0, Math.PI * 2); c.fill();
+    // gold cap where the chain meets the orb
     const fg = c.createLinearGradient(-3.6, 0, 3.6, 0);
-    fg.addColorStop(0, '#5b4a2c'); fg.addColorStop(.3, '#e8d59e'); fg.addColorStop(.55, '#b0924f'); fg.addColorStop(1, '#4a3a1f');
-    c.fillStyle = fg;
-    c.beginPath(); c.roundRect ? c.roundRect(-3.5, -.6, 7, 7.6, 1.2) : c.rect(-3.5, -.6, 7, 7.6); c.fill();
-    c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(-3.5, 2.6, 7, .7); c.fillRect(-3.5, 4.4, 7, .6);
-    // turned walnut body
-    knobPath(c);
-    const bg = c.createLinearGradient(-9.6, 0, 9.6, 0);
-    bg.addColorStop(0, '#24150c'); bg.addColorStop(.22, '#6b3f22'); bg.addColorStop(.4, '#a8693d');
-    bg.addColorStop(.58, '#7c4828'); bg.addColorStop(.85, '#3b2213'); bg.addColorStop(1, '#1d110a');
-    c.fillStyle = bg; c.fill();
-    c.save(); knobPath(c); c.clip();
-    // grain
-    c.strokeStyle = 'rgba(30,14,6,.28)'; c.lineWidth = .55;
-    for (let k = -3; k <= 3; k++){
-      c.beginPath(); c.moveTo(k * 2.4 - .6, 8); c.bezierCurveTo(k * 2.9 + 1, 16, k * 2.2 - 1, 26, k * 1.6, 35); c.stroke();
+    fg.addColorStop(0, '#7a5e2c'); fg.addColorStop(.35, '#f1dca6'); fg.addColorStop(.6, '#c9a866'); fg.addColorStop(1, '#6b5226');
+    c.fillStyle = fg; c.beginPath(); c.roundRect ? c.roundRect(-3.6, 2, 7.2, 7, 1.6) : c.rect(-3.6, 2, 7.2, 7); c.fill();
+    // the glass orb
+    const g = c.createRadialGradient(-OR * .35, OC - OR * .4, OR * .1, 0, OC, OR * 1.1);
+    if (dark){ g.addColorStop(0, 'rgba(255,255,255,.75)'); g.addColorStop(.35, '#b6a4ff'); g.addColorStop(1, '#2a1f4d'); }
+    else { g.addColorStop(0, '#ffffff'); g.addColorStop(.35, '#d9c8f5'); g.addColorStop(1, '#7a4fd0'); }
+    c.fillStyle = g; c.beginPath(); c.arc(0, OC, OR, 0, Math.PI * 2); c.fill();
+    c.strokeStyle = 'rgba(255,255,255,.8)'; c.lineWidth = .8; c.stroke();
+    // inside: a small sun by day, a crescent moon by night (it counter-turns so it always sits upright)
+    c.save(); c.translate(0, OC + 1); c.rotate(-(ang - Math.PI / 2));
+    if (dark){
+      c.fillStyle = '#fff6e0'; c.beginPath(); c.arc(0, 0, OR * .46, 0, Math.PI * 2); c.fill();
+      c.fillStyle = '#4a3a7a'; c.beginPath(); c.arc(OR * .22, -OR * .14, OR * .4, 0, Math.PI * 2); c.fill();
+    } else {
+      const sg = c.createRadialGradient(0, 0, 0, 0, 0, OR * .42);
+      sg.addColorStop(0, '#fff4dc'); sg.addColorStop(.6, '#ffc98a'); sg.addColorStop(1, '#f2a57a');
+      c.fillStyle = sg; c.beginPath(); c.arc(0, 0, OR * .42, 0, Math.PI * 2); c.fill();
     }
-    // soft top-left key light + bottom occlusion
-    const hl = c.createRadialGradient(-3.6, 17, .5, -3.6, 17, 9);
-    hl.addColorStop(0, 'rgba(255,226,190,.42)'); hl.addColorStop(1, 'rgba(255,226,190,0)');
-    c.fillStyle = hl; c.fillRect(-10, 6, 20, 30);
-    const bo = c.createLinearGradient(0, 24, 0, 35.5);
-    bo.addColorStop(0, 'rgba(0,0,0,0)'); bo.addColorStop(1, 'rgba(0,0,0,.35)');
-    c.fillStyle = bo; c.fillRect(-10, 6, 20, 30);
     c.restore();
-    // crisp specular streak
-    c.fillStyle = 'rgba(255,240,220,.38)';
-    c.beginPath(); c.ellipse(-4.4, 20.5, 1.1, 5.2, -.08, 0, Math.PI * 2); c.fill();
+    // the glass highlight
+    c.fillStyle = dark ? 'rgba(255,255,255,.4)' : 'rgba(255,255,255,.75)';
+    c.beginPath(); c.ellipse(-OR * .38, OC - OR * .5, OR * .3, OR * .14, -.5, 0, Math.PI * 2); c.fill();
     c.restore();
   }
   function draw(){
@@ -2007,34 +1993,22 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
     c.save();
     c.translate(7, 11);
     if ('filter' in c) c.filter = 'blur(3px)';
-    c.strokeStyle = `rgba(0,0,0,${sa * .8})`; c.lineWidth = thick + 1; c.lineCap = 'round';
+    c.strokeStyle = `rgba(0,0,0,${sa * .6})`; c.lineWidth = 2.4; c.lineCap = 'round';
     pathThrough(c, ps); c.stroke();
     c.fillStyle = `rgba(0,0,0,${sa})`;
     drawKnob(c, last.x, last.y, ang, true);
     c.restore();
 
-    // braided cotton cord: dark edge, body, light side, twist
+    // a fine gold bead chain
     c.lineCap = 'round'; c.lineJoin = 'round';
     pathThrough(c, ps);
-    c.strokeStyle = '#6f6455'; c.lineWidth = thick + 1.3; c.stroke();
-    c.strokeStyle = '#d6ccba'; c.lineWidth = thick; c.stroke();
-    const sm = samples(ps, thick * 1.05);
-    c.lineWidth = Math.max(.6, thick * .24);
-    c.strokeStyle = 'rgba(96,82,64,.55)';
-    c.beginPath();
-    for (const q of sm){
+    c.strokeStyle = '#b8954f'; c.lineWidth = 1.2; c.stroke();
+    const beads = samples(ps, 6.5);
+    for (const q of beads){
       if (q.y < -2) continue;
-      const nx = -q.ty, ny = q.tx, h = thick * .5;
-      c.moveTo(q.x - nx * h - q.tx * h * .7, q.y - ny * h - q.ty * h * .7);
-      c.lineTo(q.x + nx * h + q.tx * h * .7, q.y + ny * h + q.ty * h * .7);
+      c.fillStyle = '#8f6f33'; c.beginPath(); c.arc(q.x, q.y, 2.1, 0, Math.PI * 2); c.fill();
+      c.fillStyle = '#f1dca6'; c.beginPath(); c.arc(q.x - .5, q.y - .5, 1.25, 0, Math.PI * 2); c.fill();
     }
-    c.stroke();
-    // highlight along the lit side
-    c.save();
-    c.translate(-thick * .2, -thick * .05);
-    pathThrough(c, ps);
-    c.strokeStyle = 'rgba(255,252,244,.55)'; c.lineWidth = thick * .28; c.stroke();
-    c.restore();
 
     drawKnob(c, last.x, last.y, ang, false);
 
@@ -2090,7 +2064,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
     const sc = () => wrap.classList.toggle('scrolled', scrollY > 60); addEventListener('scroll', sc, { passive: true }); sc();
   };
   if (document.body.classList.contains('ready')) drop();
-  else addEventListener('intro:ready', () => setTimeout(drop, 650), { once: true });
+  else addEventListener('intro:ready', () => setTimeout(drop, 250), { once: true });
   addEventListener('resize', () => { wake(); clearTimeout(layout._t); layout._t = setTimeout(() => { layout(); wake(); }, 100); });
   new MutationObserver(wake).observe(root, { attributes: true, attributeFilter: ['data-mode'] });
   requestAnimationFrame(loop);
@@ -2140,12 +2114,15 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
       // desktop: fit the orbits into the space actually free between the text above and the arrows below,
       // so no orb or name ever sits on the heading, the room details or the controls, whatever the window's size
       const textBottom = Math.max($('.orr__head', sec).getBoundingClientRect().bottom, info.getBoundingClientRect().bottom) - r.top;
-      const top = textBottom + D * .32 + 24, bottom = H - D * .5 - 150;
-      Ry = Math.min(Rx * .3, Math.max(50, (bottom - top) / 2));
-      cy = Math.max(top + Ry, Math.min(H * .61, bottom - Ry));
+      Ry = Rx * .3;                                            // the orbits always keep this shape
+      const top = textBottom + D * .32 + 24;                   // the highest a back orb may reach
+      const need = top + 2 * Ry + D * .5 + 150;                // ...plus room under the front orb for its name and the arrows
+      if (need > H + 2) sec.style.minHeight = Math.ceil(need) + 'px';   // too short a window: the section grows rather than squash the orbits
+      cy = Math.max(top + Ry, Math.min(H * .61, H - D * .5 - 150 - Ry));
     }
+    if (narrow) sec.style.minHeight = '';
     stage.style.setProperty('--cx', cx + 'px'); stage.style.setProperty('--cy', cy + 'px');
-    const s = sec.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2);
+    const s = sec.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 1.5);
     sky.width = Math.round(s.width * dpr); sky.height = Math.round(s.height * dpr);
     skyOff = stage.getBoundingClientRect().top - s.top;
     seedSky(s.width, s.height);
@@ -2168,7 +2145,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
     dots.forEach((t, k) => t.classList.toggle('on', k === f));
   }
   function setShown(i){
-    if (i === shown) return; shown = i;
+    if (i === shown) return; shown = i; if (stars.length) drawSky();
     const fill = () => {
       info.querySelector('.orr__yr').textContent = INFO[i][0].toUpperCase();
       info.querySelector('h3').textContent = TITLES[i];
@@ -2184,17 +2161,14 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   let stars = [];
   function seedSky(w, h){ let s = 7; const r = () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
     stars = Array.from({ length: Math.round(w * h / 5200) }, () => ({ x: r() * w, y: r() * h, r: .35 + r() * 1.35, p: r() * 6.28, sp: .4 + r() * 1.2, c: r() })); }
-  let shoot = null, mx = 0, my = 0;
-  function drawSky(t){
+  function drawSky(){
     const w = sky.width / dpr, h = sky.height / dpr, dark = root.dataset.mode === 'dark';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
-    const px = mx * 10, py = my * 6;
     for (const s of stars){
-      const tw = reduced ? .8 : .55 + .45 * Math.sin(t * s.sp + s.p);
+      const tw = .55 + .45 * Math.sin(s.p * 3);              // a fixed brightness per star
       ctx.globalAlpha = dark ? tw * (.35 + s.r * .4) : tw * .45;
       ctx.fillStyle = dark ? (s.c < .15 ? '#f2a57a' : s.c < .35 ? '#b6a4ff' : '#efeaff') : (s.c < .5 ? '#ffffff' : '#ffe8d8');
-      const yy = dark ? s.y : (s.y - (t * 6 * s.sp) % h + h) % h;           // by day the motes rise slowly
-      ctx.beginPath(); ctx.arc(s.x + px * s.r, yy + py * s.r, dark ? s.r : s.r * 1.4, 0, 6.29); ctx.fill();
+      ctx.beginPath(); ctx.arc(s.x, s.y, dark ? s.r : s.r * 1.4, 0, 6.29); ctx.fill();
     }
     ctx.globalAlpha = 1;
     // orbits: one for each room; the room in focus has its orbit drawn brighter
@@ -2202,14 +2176,6 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
     ORBIT.forEach((f, k) => {
       ctx.strokeStyle = `rgba(${line},${k === shown ? .6 : .26})`; ctx.lineWidth = k === shown ? 1.6 : 1.1;
       ctx.beginPath(); ctx.ellipse(cx, oy, Rx * f, Ry * f, 0, 0, 6.29); ctx.stroke(); });
-    // now and then, a shooting star
-    if (dark && !reduced){
-      if (!shoot && Math.random() < .004) shoot = { x: w * (.55 + Math.random() * .4), y: h * Math.random() * .3, t: 0 };
-      if (shoot){ shoot.t += 1 / 60; const k = shoot.t / .9, x = shoot.x - k * 260, y = shoot.y + k * 110;
-        const g = ctx.createLinearGradient(x, y, x + 90, y - 38); g.addColorStop(0, 'rgba(255,255,255,.9)'); g.addColorStop(1, 'rgba(255,255,255,0)');
-        ctx.strokeStyle = g; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 90, y - 38); ctx.stroke();
-        if (k >= 1) shoot = null; }
-    }
   }
 
   /* ----- motion: an easing spin toward the target, a gentle step to the next room when nobody is looking ----- */
@@ -2220,19 +2186,29 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
       if (Math.abs(vel) > .0004){ base += vel; vel *= .92; target = base; if (Math.abs(vel) <= .0004) target = baseFor(frontIndex()); }
       else { base += (target - base) * Math.min(1, dt * 6); if (Math.abs(target - base) < .0005) base = target; }
     }
-    // auto (desktop only): every few seconds the next room comes round to the front, unless someone is hovering, dragging or reading
-    if (!reduced && !NARROW.matches && !busy && hover < 0 && !dragging && now - idleAt > 4200 && inView){ target = baseFor((frontIndex() + 1) % N); idleAt = now; }
-    place(); drawSky(now / 1000);
-    if (inView && !document.hidden) raf = requestAnimationFrame(loop);
+    place();
+    const moving = dragging || Math.abs(vel) > .0004 || base !== target;
+    if (moving && !document.hidden) raf = requestAnimationFrame(loop);
+    else { last = 0; autoStep(); }                             // at rest: nothing runs until something changes
   }
   const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
+  // auto (desktop only): every few seconds the next room comes round to the front, unless someone is hovering, dragging or reading
+  let autoT = 0;
+  function autoStep(){
+    clearTimeout(autoT);
+    if (reduced || NARROW.matches) return;
+    autoT = setTimeout(() => {
+      if (busy || hover >= 0 || dragging || !inView || document.hidden || performance.now() - idleAt < 4200) return autoStep();
+      idleAt = performance.now(); target = baseFor((frontIndex() + 1) % N); loadRoom(frontIndex()); kick();
+    }, Math.max(400, idleAt + 4200 - performance.now()));
+  }
   const touch = () => { idleAt = performance.now() + 6000; };            // a person did something: hold still for a while
   const goTo = k => { touch(); target = baseFor(k); vel = 0; kick(); };
-  new IntersectionObserver(es => { inView = es[0].isIntersecting; if (inView) kick(); }, { threshold: .15 }).observe(sec);
-  new ResizeObserver(() => { measure(); place(); drawSky(performance.now() / 1000); }).observe(sec);
+  new IntersectionObserver(es => { inView = es[0].isIntersecting; if (inView){ kick(); autoStep(); } }, { threshold: .15 }).observe(sec);
+  new ResizeObserver(() => { measure(); place(); drawSky(); }).observe(sec);
   document.addEventListener('visibilitychange', kick);
-  new MutationObserver(() => drawSky(performance.now() / 1000)).observe(root, { attributes: true, attributeFilter: ['data-mode'] });
-  measure(); place(); drawSky(0);
+  new MutationObserver(() => drawSky()).observe(root, { attributes: true, attributeFilter: ['data-mode'] });
+  measure(); place(); drawSky();
 
   /* ----- input: drag or swipe to spin; arrows; hover to read; click to fly in ----- */
   let downX = 0, downY = 0, lastX = 0, moved = 0, pid = null;
@@ -2241,7 +2217,6 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
     pid = e.pointerId; downX = lastX = e.clientX; downY = e.clientY; moved = 0; vel = 0; touch();
   });
   addEventListener('pointermove', e => {
-    if (canHover){ const r = sec.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width - .5; my = (e.clientY - r.top) / r.height - .5; }
     if (pid !== e.pointerId) return;
     const dx = e.clientX - lastX; lastX = e.clientX; moved = Math.max(moved, Math.abs(e.clientX - downX));
     if (!dragging && moved > 6 && Math.abs(e.clientX - downX) > Math.abs(e.clientY - downY)){ dragging = true; stage.classList.add('drag'); try { stage.setPointerCapture(pid); } catch (_) {} }
@@ -2284,8 +2259,9 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
     f.addEventListener('load', () => { ready[i] = true; post(f, { wall: 'mode', mode: root.dataset.mode === 'dark' ? 'dark' : 'light' }); }, { once: true });
     frames[i] = f; wallv.appendChild(f);
   }
-  // fetch the rooms once the orrery is near, so a click never waits
-  new IntersectionObserver((es, io) => { if (es.some(e => e.isIntersecting)){ io.disconnect(); setTimeout(() => [2, 0, 1, 3, 4].forEach((i, n) => setTimeout(() => loadRoom(i), n * 400)), 500); } }, { rootMargin: '300px' }).observe(sec);
+  // only the room at the front is fetched once the orrery is on screen (when the browser is idle); the others as soon as someone points at them
+  new IntersectionObserver((es, io) => { if (es.some(e => e.isIntersecting)){ io.disconnect(); (window.requestIdleCallback || (f => setTimeout(f, 800)))(() => loadRoom(frontIndex())); } }, { threshold: .3 }).observe(sec);
+  $('#orrGo').addEventListener('pointerenter', () => loadRoom(shown));
   orbs.forEach((o, i) => { o.addEventListener('pointerenter', () => loadRoom(i)); o.addEventListener('focus', () => loadRoom(i)); });
 
   function holdScroll(on){ if (on) stopScroll(); else startScroll(); }
@@ -2476,15 +2452,7 @@ requestAnimationFrame(() => {
   layer.addEventListener('click', e => { if (e.target === layer || e.target.classList.contains('ptab__in')) close(); });
 })();
 
-/* ---------- Lenis smooth scroll ---------- */
-try {
-  if (matchMedia('(hover: none), (pointer: coarse)').matches || root.classList.contains('lite')) throw 0;   // phones and modest devices keep native momentum scrolling
-  const { default: Lenis } = await import('lenis');
-  lenis = new Lenis({ smoothWheel: true }); window.__lenis = lenis;
-  if (!scrollEnabled) lenis.stop();
-  const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
-  requestAnimationFrame(raf);
-} catch (err) { /* native scrolling as fallback */ }
+/* scrolling is the browser's own: immediate and familiar on every device */
 </script>
 
 <script>
