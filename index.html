@@ -158,7 +158,7 @@ body.ready .fig{opacity:1;transform:translate(-50%,0)}
 .fig{pointer-events:auto;cursor:pointer;touch-action:pan-y}
 .hero__content{pointer-events:none}.hero__content a,.hero__content button,.hero__content .cal,.hero__content [data-h]{pointer-events:auto}
 /* the photo's tag opens the periodic table of what I'm made of */
-.fig__card{position:absolute;left:8%;bottom:16%;z-index:3;display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:0 1rem 0 .45rem;border-radius:999px;
+.fig__card{position:absolute;left:8%;bottom:16%;z-index:3;display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:0 1.15rem;border-radius:999px;
   border:1px solid rgba(255,255,255,.22);background:rgba(18,26,30,.74);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#EEF3F2;
   font:600 .8125rem/1 'Onest',ui-sans-serif,system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;box-shadow:0 10px 24px -12px rgba(0,0,0,.6);
   transition:transform .35s cubic-bezier(.16,1,.3,1),background .25s}
@@ -447,6 +447,8 @@ html:not([data-mode="dark"]) .story__when{color:#3F4766}
 .cord__tip{position:absolute;left:0;top:0;display:flex;align-items:flex-end;gap:.35rem;pointer-events:none;white-space:nowrap;font:500 .8125rem/1.25 var(--font);color:rgba(var(--fg-rgb),.75);opacity:0;transition:opacity .6s ease}
 .cord__tip b{font-weight:600;color:var(--acc)}
 .cord__tip svg{width:2.6rem;height:1.8rem;color:var(--acc);margin-bottom:.5rem}
+.cord__tip.below{align-items:flex-start;text-align:right}
+.cord__tip.below svg{margin:-1.2rem 0 0}
 .cord.live .cord__tip{opacity:1}
 .cord.live.scrolled .cord__tip{opacity:0}
 @media (max-width:639.98px){.cord__tip{font-size:.75rem}.cord__tip svg{width:2.1rem;height:1.5rem}}
@@ -458,7 +460,7 @@ html:not([data-mode="dark"]) .story__when{color:#3F4766}
 /* ---------- section 2: the dream orrery (five rooms circling one question) ---------- */
 :root{--room:#FBF7F8;--room-sh:rgba(18,26,30,.1)}
 html[data-mode="dark"]{--room:#050505;--room-sh:rgba(0,0,0,.85)}
-.orr{position:relative;z-index:1;margin-top:-2rem;padding-top:2rem;overflow:hidden;min-height:max(48rem,100svh);
+.orr{position:relative;z-index:1;margin-top:-2rem;padding-top:2rem;overflow:hidden;min-height:max(54rem,112svh);
   --o-ink:#1f1a33;--o-mut:#5d5677;--o-acc:#7a4fd0;--o-line:122,106,154;--o-btn:#1f1a33;--o-btn-fg:#F6F1F4;
   background:
     radial-gradient(40% 30% at 50% 66%,rgba(255,201,168,.55),transparent 75%),
@@ -896,7 +898,7 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
       <div class="fig" id="fig">
         <img id="figBase" src="assets/hero-photo-bw.webp" alt="" decoding="async" fetchpriority="high" aria-hidden="true">
         <canvas id="figCanvas" aria-hidden="true"></canvas>
-        <button class="fig__card" id="ptabOpen" aria-haspopup="dialog" aria-controls="ptab"><b><small>21</small>Jj</b>Who I am</button>
+        <button class="fig__card" id="ptabOpen" aria-haspopup="dialog" aria-controls="ptab">Who I am</button>
       </div>
     </div>
 
@@ -2034,7 +2036,12 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
     // keep the hit target on the knob
     const kx = last.x + Math.cos(ang) * 20 * knobS, ky = last.y + Math.sin(ang) * 20 * knobS;
     hit.style.transform = `translate(${kx}px, ${ky}px)`;
-    const tip = document.getElementById('cordTip'); if (tip) tip.style.transform = `translate(${kx - tip.offsetWidth - 26}px, ${ky - tip.offsetHeight + 4}px)`;
+    const tip = document.getElementById('cordTip');
+    if (tip){
+      const below = innerWidth >= 1024;
+      tip.classList.toggle('below', below);
+      tip.style.transform = below ? `translate(${kx - tip.offsetWidth + 14}px, ${ky + 34}px)` : `translate(${kx - tip.offsetWidth - 26}px, ${ky - tip.offsetHeight + 4}px)`;
+    }
   }
 
   // the rope sleeps once it hangs still, so it costs nothing while you scroll; touching, pulling or resizing wakes it
@@ -2110,10 +2117,10 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   function measure(){
     const r = stage.getBoundingClientRect(); W = r.width; H = r.height;
     const narrow = NARROW.matches;
-    cx = W / 2; cy = narrow ? H * .45 : H * .63;
-    Rx = narrow ? Math.min(W * .39, 260) : Math.min(W * .34, 560);
-    Ry = Rx * (narrow ? .66 : .27);
-    D = narrow ? Math.min(W * .21, 100) : Math.min(Math.max(W * .11, 120), 200);
+    cx = W / 2; cy = narrow ? H * .45 : H * .61;
+    Rx = narrow ? Math.min(W * .39, 260) : Math.min(W * .4, 640);
+    Ry = Rx * (narrow ? .66 : .3);
+    D = narrow ? Math.min(W * .18, 84) : Math.min(Math.max(W * .085, 96), 148);
     stage.style.setProperty('--cx', cx + 'px'); stage.style.setProperty('--cy', cy + 'px');
     const s = sec.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2);
     sky.width = Math.round(s.width * dpr); sky.height = Math.round(s.height * dpr);
@@ -2560,4 +2567,3 @@ try {
 
 </body>
 </html>
-
