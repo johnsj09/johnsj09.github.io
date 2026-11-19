@@ -2040,7 +2040,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
     if (tip){
       const below = innerWidth >= 1024;
       tip.classList.toggle('below', below);
-      tip.style.transform = below ? `translate(${kx - tip.offsetWidth + 14}px, ${ky + 34}px)` : `translate(${kx - tip.offsetWidth - 26}px, ${ky - tip.offsetHeight + 4}px)`;
+      tip.style.transform = below ? `translate(${Math.max(6, kx - tip.offsetWidth + 14)}px, ${ky + 34}px)` : `translate(${kx - tip.offsetWidth - 26}px, ${ky - tip.offsetHeight + 4}px)`;
     }
   }
 
@@ -2117,10 +2117,18 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   function measure(){
     const r = stage.getBoundingClientRect(); W = r.width; H = r.height;
     const narrow = NARROW.matches;
-    cx = W / 2; cy = narrow ? H * .45 : H * .61;
     Rx = narrow ? Math.min(W * .39, 260) : Math.min(W * .4, 640);
-    Ry = Rx * (narrow ? .66 : .3);
     D = narrow ? Math.min(W * .18, 84) : Math.min(Math.max(W * .085, 96), 148);
+    cx = W / 2;
+    if (narrow){ Ry = Rx * .66; cy = H * .45; }
+    else {
+      // desktop: fit the orbits into the space actually free between the text above and the arrows below,
+      // so no orb or name ever sits on the heading, the room details or the controls, whatever the window's size
+      const textBottom = Math.max($('.orr__head', sec).getBoundingClientRect().bottom, info.getBoundingClientRect().bottom) - r.top;
+      const top = textBottom + D * .32 + 24, bottom = H - D * .5 - 150;
+      Ry = Math.min(Rx * .3, Math.max(50, (bottom - top) / 2));
+      cy = Math.max(top + Ry, Math.min(H * .61, bottom - Ry));
+    }
     stage.style.setProperty('--cx', cx + 'px'); stage.style.setProperty('--cy', cy + 'px');
     const s = sec.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2);
     sky.width = Math.round(s.width * dpr); sky.height = Math.round(s.height * dpr);
