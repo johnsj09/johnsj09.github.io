@@ -447,8 +447,13 @@ html:not([data-mode="dark"]) .story__when{color:#3F4766}
 .cord__tip{position:absolute;left:0;top:0;display:flex;align-items:flex-end;gap:.35rem;pointer-events:none;white-space:nowrap;font:500 .8125rem/1.25 var(--font);color:rgba(var(--fg-rgb),.75);opacity:0;transition:opacity .6s ease}
 .cord__tip b{font-weight:600;color:var(--acc)}
 .cord__tip svg{width:2.6rem;height:1.8rem;color:var(--acc);margin-bottom:.5rem}
-.cord__tip.below{align-items:flex-start;text-align:right}
-.cord__tip.below svg{margin:-1.2rem 0 0}
+/* the label has three placements: left of the knob (phones), right of the rope (wide screens with room), under the knob (laptops) */
+.cord__tip .ar{display:none}
+.cord__tip.m-left .ar-curve{display:block}
+.cord__tip.m-side{align-items:center}
+.cord__tip.m-side .ar-side{display:block;order:-1;width:2.2rem;height:.9rem;margin:0}
+.cord__tip.m-under{flex-direction:column;align-items:center;text-align:center;padding-top:1.9rem}
+.cord__tip.m-under .ar-up{display:block;position:absolute;top:0;left:var(--ax,50%);width:1rem;height:1.6rem;margin:0 0 0 -.5rem}
 .cord.live .cord__tip{opacity:1}
 .cord.live.scrolled .cord__tip{opacity:0}
 @media (max-width:639.98px){.cord__tip{font-size:.75rem}.cord__tip svg{width:2.1rem;height:1.5rem}}
@@ -884,7 +889,7 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
 <!-- ============ Pull cord: light / dark switch ============ -->
 <div class="cord" id="cord">
   <canvas class="cord__cv" aria-hidden="true"></canvas>
-  <div class="cord__tip" id="cordTip" aria-hidden="true"><span class="by-day">Pull to see my<br><b>research side</b></span><span class="by-night">Pull to see my<br><b>lab side</b></span><svg viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 30 C 22 34, 40 26, 52 12"/><path d="M42 12 L53 11 L52 22"/></svg></div>
+  <div class="cord__tip" id="cordTip" aria-hidden="true"><span class="by-day">Pull to see my<br><b>research side</b></span><span class="by-night">Pull to see my<br><b>lab side</b></span><svg class="ar ar-curve" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 30 C 22 34, 40 26, 52 12"/><path d="M42 12 L53 11 L52 22"/></svg><svg class="ar ar-side" viewBox="0 0 40 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M38 8H3"/><path d="M10 2L3 8l7 6"/></svg><svg class="ar ar-up" viewBox="0 0 16 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 27V3"/><path d="M2 9l6-7 6 7"/></svg></div>
   <button class="cord__hit" id="cordHit" role="switch" aria-checked="false" aria-label="Pull the cord to switch between my lab work and my research"></button>
 </div>
 
@@ -2038,9 +2043,19 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
     hit.style.transform = `translate(${kx}px, ${ky}px)`;
     const tip = document.getElementById('cordTip');
     if (tip){
-      const below = innerWidth >= 1024;
-      tip.classList.toggle('below', below);
-      tip.style.transform = below ? `translate(${Math.max(6, kx - tip.offsetWidth + 14)}px, ${ky + 34}px)` : `translate(${kx - tip.offsetWidth - 26}px, ${ky - tip.offsetHeight + 4}px)`;
+      // phones: left of the knob. Wide screens: on the rope's right if the label fits there, else straight under the knob
+      const t = ps[N - 1];                                    // the rope just above the knob
+      const want = innerWidth < 1024 ? 'left' : (W - t.x > 180 ? 'side' : 'under');
+      if (tip.dataset.m !== want){ tip.dataset.m = want; tip.className = 'cord__tip m-' + want; }
+      const tw = tip.offsetWidth, th = tip.offsetHeight;
+      let x, y;
+      if (want === 'side'){ x = t.x + 8; y = t.y - th / 2; }
+      else if (want === 'under'){
+        const bx = last.x + Math.cos(ang) * 37 * knobS, by = last.y + Math.sin(ang) * 37 * knobS;   // the bottom of the knob
+        x = Math.min(Math.max(6, bx - tw / 2), W - tw - 8); y = by + 6;
+        tip.style.setProperty('--ax', (bx - x).toFixed(1) + 'px');
+      } else { x = kx - tw - 26; y = ky - th + 4; }
+      tip.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
     }
   }
 
