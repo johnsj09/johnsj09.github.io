@@ -667,7 +667,7 @@ html:not([data-mode="dark"]) .orrfly{background:radial-gradient(circle at var(--
 .mform label.qc:has(input:checked)::before{border:5px solid var(--foreground)}
 .mform label.qc:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
 .mform label.qc--q>span{color:rgba(var(--fg-rgb),.7);font-weight:400}
-.cur{display:flex;gap:.25rem;align-self:flex-start;padding:.25rem;margin-bottom:.25rem;border-radius:99px;background:var(--surface)}
+.mform .cur{display:flex;gap:.25rem;align-self:flex-start;padding:.25rem;margin-bottom:.25rem;border-radius:99px;background:var(--surface)}
 .mform .cur label{position:relative;flex-direction:row;gap:0}
 .mform .cur input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
 .mform .cur span{display:inline-flex;align-items:center;min-height:2.25rem;padding:0 .9rem;border-radius:99px;font-size:.8125rem;font-weight:600;text-transform:none;letter-spacing:0;color:rgba(var(--fg-rgb),.62);cursor:pointer;transition:background .2s,color .2s}
@@ -871,13 +871,7 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
   /* footer: space between the two research entries */
   .sf__cols>div:nth-child(3) li+li{margin-top:.55rem}
   /* back-to-top: smaller and tucked into the corner so it covers less text */
-    .totop{width:2.6rem;height:2.6rem;right:max(.75rem,env(safe-area-inset-right));bottom:max(.75rem,env(safe-area-inset-bottom))}
-  /* no borders, rounded edges or shadows between sections on phones */
-  .hero,.sf{border-radius:0 !important}
-  .orr__info{border:0 !important}
-  .story{border-top:0 !important;box-shadow:none !important}
-  .story__clock{border-bottom:0 !important;box-shadow:none !important}
-  .sf__cols{border-top:0 !important}
+  .totop{width:2.6rem;height:2.6rem;right:max(.75rem,env(safe-area-inset-right));bottom:max(.75rem,env(safe-area-inset-bottom))}
 }
 </style>
 </head>
@@ -928,7 +922,7 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
       <div class="fig" id="fig">
         <img id="figBase" src="assets/hero-photo-bw.webp" alt="" decoding="async" fetchpriority="high" aria-hidden="true">
         <canvas id="figCanvas" aria-hidden="true"></canvas>
-        <button class="fig__card" id="ptabOpen" aria-haspopup="dialog" aria-controls="ptab">Me, in 21 elements</button>
+        <button class="fig__card" id="ptabOpen" aria-haspopup="dialog" aria-controls="ptab">My Elements</button>
       </div>
     </div>
 
@@ -955,7 +949,7 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
             <span class="pill__in" data-h="s 1 1.04" data-hs="320 18" data-ht=".pill">See my work</span>
           </button>
         </div>
-        <p class="proof rv" style="--d:340ms"><span class="by-day">2 years building GxP-validated LIMS for GSK and BMS · MSc Computational Neuroscience (Distinction), Nottingham</span><span class="by-night">MSc Computational Neuroscience (Distinction), Nottingham · hippocampal memory model, manuscript in preparation</span></p>
+        <p class="proof rv" style="--d:340ms"><span class="by-day">2 years building GxP-validated LIMS for GSK and BMS · now freelance LIMS developer with HTIC, IIT Madras · MSc Computational Neuroscience (Distinction)</span><span class="by-night">MSc Computational Neuroscience (Distinction), Nottingham · hippocampal memory model, manuscript in preparation</span></p>
       </div>
 
     </div>
@@ -1019,13 +1013,14 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
           <div class="story__line">
             <span class="story__rail" aria-hidden="true"></span><span class="story__ttrack" aria-hidden="true"><span class="story__tail"></span></span><span class="story__dtrack" aria-hidden="true"><span class="story__dot"></span></span>
             <ol class="story__list">
-          <li class="ch ch--now" data-y="2026" data-when="2025 — Present">
-            <p class="ch__date">2025 — Present</p>
-            <h3 class="ch__t">Freelance lab software</h3>
-            <p class="ch__org">Independent, Nottingham</p>
+          <li class="ch ch--now" data-y="2026" data-when="Dec 2025 — Present">
+            <p class="ch__date">Dec 2025 — Present</p>
+            <h3 class="ch__t">Independent Researcher &amp; Freelance LIMS Developer</h3>
+            <p class="ch__org">Nottingham · freelance with HTIC, IIT Madras</p>
             <ul class="ch__b">
-              <li>Building a sample-management and data-visualisation platform for a research client (details under NDA).</li>
-              <li>Taking on LIMS configuration, instrument integration and lab-data work for small teams.</li>
+              <li>Independent research on memory and sleep, including the hippocampal-model (C-HORSE) manuscript in preparation with Dr Nick Myers.</li>
+              <li>Since Sept 2026: freelance LIMS developer with HTIC, IIT Madras.</li>
+              <li>Building independent LIMS: sample management, workflows and data visualisation, plus instrument integration and lab-data work for small teams, alongside part-time work in a lab.</li>
             </ul>
           </li>
           <li class="ch" data-y="2025" data-when="2024 — 2025">
@@ -1051,7 +1046,7 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
             <h3 class="ch__t">Research Assistant, Vascular Biology</h3>
             <p class="ch__org">SASTRA University, India</p>
             <ul class="ch__b">
-              <li>Designed and ran ischaemia-reperfusion experiments; worked hands-on with SEM and TEM on tissue.</li>
+              <li>Alongside my BTech: designed and ran ischaemia-reperfusion experiments; worked hands-on with SEM and TEM on tissue.</li>
               <li>Co-first author, Naunyn-Schmiedeberg’s Archives of Pharmacology (2023).</li>
             </ul>
           </li>
@@ -1084,9 +1079,9 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
     </div>
     <div class="sf__cols">
       <div><h3>Work</h3><ul class="work"><li><a href="rooms/lab.html" data-door="0">The Lab</a></li><li><a href="rooms/freelance.html" data-door="1">Freelance</a></li><li><a href="rooms/memory.html" data-door="2">Memory &amp; Sleep</a></li><li><a href="rooms/vision.html" data-door="3">Machine Vision</a></li><li><a href="rooms/bench.html" data-door="4">The Bench</a></li></ul></div>
-      <div><h3>Navigate</h3><ul><li><a href="./" data-go="home">Home</a></li><li><a href="./#about" data-go="about">My story</a></li><li><button data-contact="">Contact</button></li><li><a href="assets/Jefri-Thimoathi-Johnson-CV.pdf" download data-cvdl>Download CV</a></li><li><a href="mailto:jefrithimoathijohnson@gmail.com">Email</a></li><li><a href="https://www.linkedin.com/in/jefri-thimoathi-johnson-8b94811a7" target="_blank" rel="noopener">LinkedIn ↗</a></li><li><a href="https://github.com/jefrithimoathijohnson" target="_blank" rel="noopener">GitHub ↗</a></li></ul></div>
+      <div><h3>Navigate</h3><ul><li><a href="./" data-go="home">Home</a></li><li><a href="./#about" data-go="about">My story</a></li><li><button data-contact="">Contact</button></li><li><a href="assets/Jefri-Thimoathi-Johnson-CV.pdf" download data-cvdl>Download CV</a></li><li><a href="mailto:jefrithimoathijohnson@gmail.com">Email</a></li><li><a href="https://www.linkedin.com/in/jefri-thimoathi-johnson-8b94811a7" target="_blank" rel="noopener">LinkedIn ↗</a></li><li><a href="https://github.com/johnsj09" target="_blank" rel="noopener">GitHub ↗</a></li></ul></div>
       <div><h3>Research</h3><ul><li><a href="https://doi.org/10.1007/s00210-023-02481-x" target="_blank" rel="noopener">Co-first author, Naunyn-Schmiedeberg's Arch. Pharmacol. (2023) ↗</a></li><li class="st">Hippocampal memory model (C-HORSE): manuscript in preparation with Dr Nick Myers</li></ul></div>
-      <div><h3>Status</h3><ul><li class="st">Open to work</li><li class="st">Eligible to work in the UK (Graduate visa)</li><li class="st">Nottingham, UK · on-site, hybrid or remote</li><li class="st">Local time <span data-ftime="">—</span></li></ul></div>
+      <div><h3>Status</h3><ul><li class="st">Open to full-time roles · freelance projects welcome</li><li class="st">Eligible to work in the UK (Graduate visa)</li><li class="st">Nottingham, UK · on-site, hybrid or remote</li><li class="st">Local time <span data-ftime="">—</span></li></ul></div>
     </div>
     <div class="sf__bot"><span>© <span data-fyear="">2026</span> Jefri Thimoathi Johnson.</span><button data-go="home">Back to top ↑</button></div>
   </div>
@@ -2110,7 +2105,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   const TITLES = ['The Lab', 'Freelance', 'Memory & Sleep', 'Machine Vision', 'The Bench'];
   const INFO = [   // [years, sub-headline, highlights]
     ['2022–24 · Zifo, with GSK and BMS', 'Two years inside regulated pharma labs', ['LIMS data models & workflows', 'Java & REST/SOAP integrations', 'AWS S3 pipeline, 50% faster', 'GxP validation & documentation']],
-    ['2025–now · Independent', 'Lab software for small research teams', ['Sample management & tracking', 'Data visualisation dashboards', 'LIMS setup & configuration', 'Client work kept under NDA']],
+    ['Dec 2025–Present · Independent', 'LIMS and lab software for research teams', ['Freelance with HTIC, IIT Madras', 'Sample management & tracking', 'Data visualisation dashboards', 'LIMS setup & configuration']],
     ['2024–25 · MSc, Nottingham', 'How one circuit learns rules and episodes', ['Hippocampal model (C-HORSE)', 'Museum task: 18 paintings', 'Lesion tests on two pathways', 'Sleep stages & replay']],
     ['2024–25 · MSc project', 'A self-driving car on a Raspberry Pi', ['CNN steering & speed', 'SSD-MobileNetV2 detector', '0.96 mAP at 45 fps', 'Supervised by Dr Maggie Lieu']],
     ['2019–22 · SASTRA University', 'Where it started: wet-lab research', ['Ischaemia-reperfusion studies', 'SEM & TEM on tissue', 'Peer-reviewed paper, 2023']],

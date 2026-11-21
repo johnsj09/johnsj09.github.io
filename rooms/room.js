@@ -181,7 +181,7 @@
       // nodes
       rects = [];
       const node = (p, label, key, big) => {
-        ctx.font = font(big ? 15 : 13, big ? 650 : 550);
+        ctx.font = font(big ? 15 : vert ? 12 : 13, big ? 650 : 550);
         const tw = ctx.measureText(label).width, bw = tw + (big ? 34 : 24), bh = big ? 46 : 34;
         const x = Math.max(4, Math.min(w - bw - 4, p[0] - bw / 2)), y = p[1] - bh / 2;
         const on = sel === key;
@@ -192,7 +192,8 @@
       // hub pulse
       const pr = 34 + (t * 18 % 26);
       ctx.beginPath(); ctx.arc(hub[0], hub[1], pr, 0, 7); ctx.strokeStyle = door; ctx.globalAlpha = Math.max(0, 1 - (pr - 34) / 26) * .5; ctx.lineWidth = 2; ctx.stroke(); ctx.globalAlpha = 1;
-      IN.forEach(([k, l], i) => node(pin[i], vert ? l.split(' ')[0] : l, k));
+      const SHORT = { plate: 'Plate', cds: 'CDS', bal: 'Balance', path: 'Pathology' };
+      IN.forEach(([k, l], i) => node(pin[i], vert ? SHORT[k] || l.split(' ')[0] : l, k));
       OUT.forEach(([k, l], i) => node(pout[i], vert ? l.split(' ')[0] : l, k));
       node(hub, 'LIMS', 'lims', true);
       ctx.font = font(11, 600); ctx.fillStyle = mut; ctx.textAlign = 'center';
@@ -337,7 +338,7 @@
       ctx.beginPath(); ctx.moveTo(X(m), T - 10); ctx.lineTo(X(m), H + 6); ctx.strokeStyle = acc2; ctx.lineWidth = 1.5; ctx.stroke();
       ctx.beginPath(); ctx.arc(X(m), Y(ST[s][1]), 6, 0, 7); ctx.fillStyle = acc2; ctx.fill();
       ctx.textAlign = 'left'; ctx.fillStyle = mut; ctx.font = font(11, 550);
-      for (let hr = 0; hr <= 8; hr++){ const x = L + hr / 8 * (Rr - L); ctx.fillText((23 + hr) % 24 + ':00', Math.min(x - 12, w - 40), H + 20); }
+      for (let hr = 0; hr <= 8; hr += w < 520 ? 2 : 1){ const x = L + hr / 8 * (Rr - L); ctx.fillText((23 + hr) % 24 + ':00', Math.min(x - 12, w - 40), H + 20); }
       // the EEG under the cursor
       const E0 = H + 40, EH = h - E0 - 12;
       ctx.beginPath();
