@@ -920,7 +920,7 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
 
     <div class="hero__stage">
       <div class="fig" id="fig">
-        <img id="figBase" src="assets/hero-photo-bw.webp" alt="" decoding="async" fetchpriority="high" aria-hidden="true">
+        <img id="figBase" src="assets/hero-photo-bw.webp?v=2" alt="" decoding="async" fetchpriority="high" aria-hidden="true">
         <canvas id="figCanvas" aria-hidden="true"></canvas>
         <button class="fig__card" id="ptabOpen" aria-haspopup="dialog" aria-controls="ptab">My Elements</button>
       </div>
@@ -1286,7 +1286,7 @@ html:not([data-mode="dark"]) .story__amb i:nth-child(5){--c1:255,214,176;--c2:20
 </div>
 
 <script type="module">
-const COLOUR_SRC = "assets/hero-photo.webp";   // the colour photo, revealed under the cursor
+const COLOUR_SRC = "assets/hero-photo.webp?v=2";   // the colour photo, revealed under the cursor
 const $ = (s, r = document) => r.querySelector(s);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const canHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
