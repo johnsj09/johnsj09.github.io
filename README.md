@@ -1,8 +1,10 @@
 # Jefri Thimoathi Johnson — portfolio
 
-Static site: no build step. It lives in the GitHub repository behind `johnsj09.github.io` and is published
-by Cloudflare from that repository (every push to `main` republishes it). If you use Cloudflare, turn off
-GitHub Pages so only one copy of the site exists.
+Static site: no build step. It is hosted on GitHub Pages at https://johnsj09.github.io
+(every push to `main` republishes it within a minute or two).
+
+If you replace a photo, keep the file name and bump the `?v=` number next to it in `index.html`
+(search for `hero-photo`), so browsers fetch the new one instead of a cached copy.
 
 ## What's where
 - `index.html` — the main page (light mode = lab informatics, dark mode = research; pull the cord to switch)
